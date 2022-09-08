@@ -1,0 +1,54 @@
+{
+  "root": true,
+  "project": {
+    "name": "Dr. Angela Segal"
+  },
+  "api": {
+    "projectId": "0jo9hjnc",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "@sanity/dashboard",
+    "media",
+    "netlify-deploy-status-badge",
+    "@sanity/orderable-document-list"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "src/deskStructure"
+    },
+    {
+      "implements": "part:@sanity/base/brand-logo",
+      "path": "src/logo.js"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "src/variables.css"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/image/asset-sources",
+      "path": "./parts/assetSources.js"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/file/asset-sources",
+      "path": "./parts/assetSources.js"
+    }
+  ]
+}

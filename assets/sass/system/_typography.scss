@@ -1,0 +1,140 @@
+// typeface
+@mixin serifTypeface() {
+  font-family: 'Source Serif', serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin sansSerifTypeface() {
+  font-family: 'Source Sans', sans-serif;
+  font-weight: 400;
+}
+
+@mixin monoTypeface() {
+  font-family: 'Source Sans Code', sans-serif;
+  font-weight: 400;
+}
+
+// GENERAL
+@mixin displayHeadingStyle() {
+  @include serifTypeface();
+  font-size: 124px;
+  font-weight: 300;
+  line-height: 155px;
+  letter-spacing: 0.02em;
+}
+
+@mixin headingStyle() {
+  @include serifTypeface();
+  font-weight: 300;
+  line-height: 55px;
+  letter-spacing: 0.02em;
+}
+
+@mixin titleStyle() {
+  @include sansSerifTypeface();
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@mixin largeTextStyle() {
+  @include sansSerifTypeface();
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+}
+
+@mixin textStyle() {
+  @include sansSerifTypeface();
+  font-size: 16px;
+  font-style: normal;
+  line-height: 26px;
+}
+
+@mixin quoteStyle() {
+  @include sansSerifTypeface();
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 33px;
+  letter-spacing: 0.01em;
+}
+
+@mixin displayTextStyle() {
+  @include monoTypeface();
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+}
+
+
+
+// SPECIFIC
+@mixin navPrimaryStyle() {
+  @include sansSerifTypeface();
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0.2em;
+}
+
+@mixin navSecondaryStyle() {
+  @include sansSerifTypeface();
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0.2em;
+}
+
+@mixin footerNav() {
+  @include sansSerifTypeface();
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0.02em;
+}
+
+@mixin footerText() {
+  @include sansSerifTypeface();
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+}
+
+@mixin footerDetailText() {
+  @include monoTypeface();
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+
+@mixin newsletterTitle() {
+  @include sansSerifTypeface();
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 29px;
+  letter-spacing: 0.02em;
+}
+
+@mixin postPreviewTitle() {
+  @include sansSerifTypeface();
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 29px;
+}
+
+@mixin labelStyle() {
+  font-size: inherit;
+  background: $white;
+}
+
+@mixin inputStyle() {
+  background: $white;
+
+}

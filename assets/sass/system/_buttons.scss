@@ -1,0 +1,14 @@
+$btnTransition: .25s ease-in all;
+
+@mixin resetBtn() {
+  outline: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

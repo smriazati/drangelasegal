@@ -1,0 +1,27 @@
+$collapse-bp: 980px;
+$container-width: 1440px;
+
+@mixin baseContainer() {
+  max-width: $container-width;
+  margin: 0 auto;
+
+  @media (max-width: $container-width) {
+    max-width: 90%;
+  }
+}
+
+@mixin baseGrid() {
+  @include baseContainer();
+  display: grid;
+  grid-auto-rows: auto;
+
+  @media (min-width: $collapse-bp) {
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 30px;
+  }
+
+  @media (max-width: $collapse-bp) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 15px;
+  }
+}

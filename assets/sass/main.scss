@@ -1,0 +1,251 @@
+@use 'system/_colors.scss' as *;
+@use 'system/_typography.scss' as *;
+@use 'system/_layout.scss' as *;
+@use 'system/_buttons.scss' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: $sunlight;
+}
+
+body {
+  background: $white;
+  color: $body-text-color;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+figure,
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// utilities 
+.visually-hidden {
+  display: none;
+}
+
+.show-on-mobile {
+  @media (min-width: $collapse-bp) {
+    display: none !important;
+  }
+}
+
+/* typography */
+html {
+  font-size: 16px;
+  @include sansSerifTypeface;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figcaption,
+blockquote {
+  @include textStyle;
+}
+
+h1,
+.display-style {
+  @include displayHeadingStyle();
+}
+
+.display-sm-style {
+  @include headingStyle();
+}
+
+.title-style {
+  @include titleStyle();
+}
+
+.large-text-style {
+  @include largeTextStyle;
+}
+
+.text-style {
+  @include textStyle();
+}
+
+.quote-style {
+  @include quoteStyle();
+}
+
+.display-text-style {
+  @include displayTextStyle;
+}
+
+// links & btns
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+ul,
+ol {
+  a:not(.link-inherit) {
+    color: inherit;
+    transition: .3s ease all;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+}
+
+nav ul a {
+  color: inherit;
+}
+
+ul.no-style {
+  list-style: none;
+}
+
+button {
+  @include resetBtn;
+}
+
+// layouts
+.row,
+.flex-row {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+
+  &.flex-col-center {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+.base-container {
+  @include baseContainer;
+}
+
+.grid-wrapper {
+  @include baseGrid;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  main {
+    flex: 2;
+  }
+}
+
+// forms 
+
+button[disabled],
+input[disabled],
+button.disabled {
+  pointer-events: none
+}
+
+label {
+  @include labelStyle;
+}
+
+input,
+textarea {
+  @include inputStyle;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+input {
+  height: 48px;
+  width: 100%;
+  min-width: 100%;
+}
+
+// transitions
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+
+// icons 
+
+.icon {
+  &:not(.icon-transparent) {
+    background: $black;
+  }
+
+  span {
+    display: none;
+  }
+
+  &.instagram::after {
+    background-image: url("/icons/instagram.svg");
+  }
+
+  &.pinterest::after {
+    background-image: url("/icons/pinterest.svg");
+  }
+
+  &.chevron-left::after {
+    mask-image: url("/icons/chevron-left.svg");
+  }
+
+  &.chevron-right::after {
+    mask-image: url("/icons/chevron-right.svg");
+  }
+
+  &::after {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: cover;
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.lg-screen-hide {
+  @media (min-width: $collapse-bp) {
+    display: none;
+  }
+}
+
+#__layout {
+  overflow: hidden;
+}
