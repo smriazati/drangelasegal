@@ -1,6 +1,8 @@
 <template>
-  <div class="page-container journal-page">
-    <PageTitle />
+  <div class="page-container journal-page" ref="scrollTo">
+    <div>
+      <PageTitle />
+    </div>
     <PostGrid :data="data" />
     <div class="pagination">
       <div v-if="showPrevLink" class="prev-btn">
@@ -82,6 +84,14 @@ export default {
     },
   },
   methods: {
+    scrollToTop() {
+      const element = this.$refs.scrollTo;
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    },
     async getPrevPosts() {
       const lastId = this.lastId;
       const lastDate = this.lastDate;
@@ -104,6 +114,7 @@ export default {
         .fetch(testQuery, { lastDate, lastId })
         .then((res) => res);
       this.data = data;
+      this.scrollToTop();
     },
     async getNextPosts() {
       const lastId = this.lastId;
@@ -127,6 +138,7 @@ export default {
         .fetch(testQuery, { lastDate, lastId })
         .then((res) => res);
       this.data = data;
+      this.scrollToTop();
     },
   },
   data() {
