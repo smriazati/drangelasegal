@@ -8,3 +8,12 @@
   </nav>
 </template>
 
+<style lang="scss">
+.nav-secondary {
+  li a.nuxt-link-exact-active:hover {
+    color: inherit;
+    cursor: default;
+  }
+}
+</style>
+

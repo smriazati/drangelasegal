@@ -1,11 +1,20 @@
 <template>
-  <div>
-    {{ data }}
+  <div class="learn-page">
+    <div v-if="data.video">
+      <LearnFeaturedVids :data="data.video" />
+    </div>
+    <div v-if="data.courses">
+      <LearnCourses :data="data.courses" />
+    </div>
+    <div v-if="data.cta">
+      <SiteCTA :data="data.cta" />
+    </div>
   </div>
 </template>
   
   <script>
 import { groq } from "@nuxtjs/sanity";
+import Thumbnail from "../components/Video/Thumbnail.vue";
 const query = groq`
 *[_type in ["learn"]][0]{
   "courses": {
@@ -49,7 +58,13 @@ export default {
     const data = await $sanity.fetch(query).then((res) => res);
     return { data };
   },
+  components: { Thumbnail },
 };
 </script>
   
+<style lang="scss">
+.learn-page {
+  margin-bottom: 0 !important;
+}
+</style>
   

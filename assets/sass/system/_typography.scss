@@ -99,7 +99,7 @@
   @include sansSerifTypeface();
   font-size: 16px;
   font-weight: 400;
-  line-height: 29px;
+  line-height: 18px;
   letter-spacing: 0.02em;
 }
 
@@ -145,4 +145,31 @@
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.02em;
+}
+
+@mixin calloutStyle() {
+  //styleName: Callout;
+  @include sansSerifTypeface();
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 61px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@mixin ctaStyle() {
+  @include serifTypeface();
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 45px;
+  letter-spacing: 0em;
+}
+
+@mixin largeTextMonoStyle() {
+  @include monoTypeface();
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.02em;
+  text-align: left;
 }

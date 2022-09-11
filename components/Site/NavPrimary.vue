@@ -8,3 +8,16 @@
   </nav>
 </template>
 
+<style lang="scss">
+.nav-primary {
+  li a:hover,
+  li a.nuxt-link-exact-active {
+    color: black;
+    border-bottom: 1px solid black;
+  }
+  li a.nuxt-link-exact-active:hover {
+    color: black;
+    cursor: default;
+  }
+}
+</style>

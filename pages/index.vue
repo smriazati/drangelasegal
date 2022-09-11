@@ -1,29 +1,43 @@
 <template>
-  <div>
-    {{ data }}
+  <div class="index-page">
+    <HomeBanner />
+    <div v-if="data.power_up">
+      <HomePowerUp :data="data.power_up" />
+    </div>
+    <div class="flex-row">
+      <div v-if="data.callout_left">
+        <HomeCallout :data="data.callout_left" />
+      </div>
+      <div v-if="data.callout_right">
+        <HomeCallout :data="data.callout_right" />
+      </div>
+    </div>
+    <div v-if="data.testimonial">
+      <HomeTestimonial :data="data.testimonial" />
+    </div>
   </div>
 </template>
 
 <script>
 import { groq } from "@nuxtjs/sanity";
 const query = groq`
-  *[_type in ["home"]][0]{
+*[_type in ["home"]][0]{
   power_up,
-  "left": {
+  "callout_left": {
     "img": {
-      "url": testimonial.img.image.asset->url,
-      "alt": testimonial.img.image.asset->altText
+      "url": callout_left.img.image.asset->url,
+      "alt": callout_left.img.image.asset->altText
     },
-    title,
-    desc
+    "title": callout_left.title,
+    "button": callout_left.button
   },
   "callout_right": {
     "img": {
-      "url": testimonial.img.image.asset->url,
-      "alt": testimonial.img.image.asset->altText
+      "url": callout_right.img.image.asset->url,
+      "alt": callout_right.img.image.asset->altText
     },
-    title,
-    desc
+    "title": callout_right.title,
+    "button": callout_right.button
   },
   "testimonial": {
     "img": {
@@ -49,3 +63,9 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.index-page {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+</style>

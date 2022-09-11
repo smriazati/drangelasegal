@@ -1,6 +1,7 @@
 $collapse-bp: 980px;
 $container-width: 1440px;
 $lg-bp: 1600px;
+$headerHeight: 214px;
 
 @mixin baseContainer() {
   max-width: $container-width;
@@ -24,5 +25,16 @@ $lg-bp: 1600px;
   @media (max-width: $collapse-bp) {
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 15px;
+  }
+}
+
+@mixin stackedDivs {
+  display: grid;
+  grid-template: 1fr / 1fr;
+
+  >* {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+    position: relative;
   }
 }

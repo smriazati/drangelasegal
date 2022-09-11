@@ -21,3 +21,20 @@ $btnTransition: .25s ease-in all;
     border-bottom-color: transparent;
   }
 }
+
+@mixin linkUnderline($color: #000) {
+  border-bottom: 1px solid $color;
+  transition: .3s ease all;
+
+  &:hover {
+    border-color: transparent;
+  }
+}
+
+@mixin btnFill() {
+  background: $golden;
+  @include inputStyle;
+  text-transform: uppercase;
+  color: $white;
+  padding: 22px 36px;
+}
