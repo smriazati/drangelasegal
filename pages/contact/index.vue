@@ -13,3 +13,9 @@
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.contact-page {
+  background: #fdfaf6;
+}
+</style>

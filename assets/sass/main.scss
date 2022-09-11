@@ -133,6 +133,14 @@ input[type="submit"]:hover {
   @include inputStyle;
 }
 
+.btn-fill {
+  @include btnFill;
+
+  &[disabled] {
+    opacity: .4;
+  }
+}
+
 // layouts
 .row,
 .flex-row {
@@ -293,9 +301,14 @@ input {
 /* layouts */
 
 main.site-main>div,
-.page-container {
-  margin-top: 120px;
-  margin-bottom: 160px;
+.page-container:not(.page-container-no-padding) {
+  padding-top: 120px;
+  padding-bottom: 160px;
+}
+
+.no-page-padding {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .page-title {

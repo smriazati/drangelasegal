@@ -1,5 +1,5 @@
 <template>
-  <div class="energy-healing">
+  <div class="energy-healing no-page-padding">
     <div v-if="data.banner">
       <SiteBannerFixed :imgUrl="data.banner.url" />
     </div>
@@ -124,9 +124,6 @@ export default {
 
 <style lang="scss">
 .energy-healing {
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
-
   .layout-image-text {
     // grid-template-rows: 50vw;
     .text-wrapper {

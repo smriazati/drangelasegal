@@ -1,5 +1,5 @@
 <template>
-  <div class="index-page">
+  <div class="index-page no-page-padding">
     <HomeBanner />
     <div v-if="data.power_up">
       <HomePowerUp :data="data.power_up" />
@@ -64,8 +64,4 @@ export default {
 </script>
 
 <style lang="scss">
-.index-page {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
 </style>

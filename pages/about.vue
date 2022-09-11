@@ -1,5 +1,5 @@
 <template>
-  <div class="about-page">
+  <div class="about-page no-page-padding">
     <div v-if="data.about">
       <div class="layout-image-text">
         <div class="image-wrapper">
@@ -58,9 +58,6 @@ export default {
 </script>
 <style lang="scss">
 .about-page {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-
   .layout-image-text {
     .text-wrapper-inner {
       padding-top: 120px;
