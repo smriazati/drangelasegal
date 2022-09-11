@@ -7,7 +7,7 @@
       </div>
       <div class="post-content">
         <div class="image-wrapper">
-          <figure v-if="post.img">
+          <figure v-if="post.img.url">
             <img
               :src="$urlFor(post.img.url).height(1400).auto('format')"
               :alt="post.img.alt"
@@ -22,12 +22,16 @@
       </div>
     </div>
     <div class="pagination">
-      <nuxt-link :to="`/journal`"
-        ><span class="title-style link-underline">Prev</span></nuxt-link
-      >
-      <nuxt-link :to="`/journal`"
-        ><span class="title-style link-underline">Next</span></nuxt-link
-      >
+      <div v-if="prevSlug" class="prev-btn">
+        <nuxt-link :to="`/journal/posts/${prevSlug}`"
+          ><span class="title-style link-underline">Prev</span></nuxt-link
+        >
+      </div>
+      <div v-if="nextSlug" class="next-btn">
+        <nuxt-link :to="`/journal/posts/${nextSlug}`"
+          ><span class="title-style link-underline">Next</span></nuxt-link
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -57,10 +61,57 @@ export default {
     const post = await $sanity.fetch(query).then((res) => res);
     return { post };
   },
+  mounted() {
+    this.getPrevSlug();
+    this.getNextSlug();
+  },
+  methods: {
+    async getNextSlug() {
+      const lastId = this.post._id;
+      const lastDate = this.post.date;
+      if (!lastId || !lastDate) {
+        return;
+      }
+      const testQuery = groq`*[_type == "posts" && (
+        date < $lastDate
+        || (date == $lastDate && _id < $lastId)
+      )] | order(date desc) [0] {
+         "slug": slug.current
+      }`;
+      const data = await this.$sanity
+        .fetch(testQuery, { lastDate, lastId })
+        .then((res) => res);
+      this.nextSlug = data.slug;
+    },
+    async getPrevSlug() {
+      const lastId = this.post._id;
+      const lastDate = this.post.date;
+      if (!lastId || !lastDate) {
+        return;
+      }
+      const testQuery = groq`*[_type == "posts" && (
+        date > $lastDate
+        || (date == $lastDate && _id > $lastId)
+      )] | order(date desc) [0] {
+         "slug": slug.current
+      }`;
+      const data = await this.$sanity
+        .fetch(testQuery, { lastDate, lastId })
+        .then((res) => res);
+      this.prevSlug = data.slug;
+    },
+  },
   data() {
     return {
       serializers: serializers,
+      nextSlug: undefined,
+      prevSlug: undefined,
     };
+  },
+  watch: {
+    post() {
+      console.log("data changed");
+    },
   },
   computed: {
     date() {

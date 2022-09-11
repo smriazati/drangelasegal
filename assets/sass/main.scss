@@ -356,9 +356,21 @@ main.site-main>div,
 
 .pagination {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
   justify-content: space-between;
   padding: 63px 22px 0px 22px;
+
+  .prev-btn {
+    grid-column: 1 / 2;
+    text-align: left;
+  }
+
+  .next-btn {
+    grid-column: 2 / 3;
+    text-align: right;
+  }
 }
 
 .text-center {
@@ -452,4 +464,29 @@ main.site-main>div,
 
 .ul-plain {
   list-style: none;
+}
+
+.post-list {
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .post-list-item {
+    text-align: center;
+    margin-bottom: 60px;
+
+    @media (min-width: $collapse-bp) {
+      flex: 0 0 30%;
+    }
+
+    @media (max-width: $collapse-bp) {
+      flex: 0 0 45%;
+    }
+
+    h3 {
+      margin-top: 24px;
+      @include postPreviewTitle;
+    }
+  }
 }

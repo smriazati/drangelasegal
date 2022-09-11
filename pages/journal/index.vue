@@ -1,52 +1,29 @@
 <template>
   <div class="page-container journal-page">
-    <div v-if="data.journal" class="page-title">
-      <h1>Journal</h1>
-      <h2>{{ data.journal.title }}</h2>
-      <p>{{ data.journal.desc }}</p>
-    </div>
-    <div v-if="data.posts" class="post-list">
-      <div v-for="item in data.posts" :key="item._id" class="post-list-item">
-        <nuxt-link :to="`/journal/${item.slug}`">
-          <div class="image-wrapper">
-            <figure v-if="item.img">
-              <img
-                :src="
-                  $urlFor(item.img.url).width(417).height(396).auto('format')
-                "
-                :alt="item.img.alt"
-              />
-            </figure>
-          </div>
-          <div class="text-wrapper">
-            <h3 v-if="item.title">
-              {{ item.title }}
-            </h3>
-          </div>
-        </nuxt-link>
-      </div>
-    </div>
+    <PageTitle />
+    <PostGrid :data="data" />
     <div class="pagination">
-      <nuxt-link to=""
-        ><span class="title-style link-underline">Prev</span></nuxt-link
-      >
-      <nuxt-link to=""
-        ><span class="title-style link-underline">Next</span></nuxt-link
-      >
+      <div v-if="showPrevLink" class="prev-btn">
+        <button @click="getPrevPosts">
+          <span class="title-style link-underline">prev</span>
+        </button>
+      </div>
+      <div v-if="showNextLink" class="next-btn">
+        <button @click="getNextPosts">
+          <span class="title-style link-underline">Next</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
   
 <script>
+import PageTitle from "../../components/Journal/PageTitle.vue";
+import PostGrid from "../../components/Journal/PostGrid.vue";
 import { groq } from "@nuxtjs/sanity";
 const query = groq`
-*[_type in ["journal", "posts"]]{
-  'journal': *[_type=='journal']{
-    title,
-    desc,
-  }[0],
-  'posts': *[_type=='posts']{
-    "slug": slug.current,
+*[_type in ["posts"]]{
+ "slug": slug.current,
     date,
     title,
     "img": {
@@ -54,9 +31,8 @@ const query = groq`
       "alt": img.image.asset->altText
     },
     _id
-  }[0...6]|order(date desc),
-}[0]
-  `;
+}|order(date desc)[0...6]
+`;
 
 export default {
   head() {
@@ -64,36 +40,105 @@ export default {
       title: "Journal",
     };
   },
+  computed: {
+    lastId() {
+      let lastId;
+      if (this.data.length > 0) {
+        const lastPost = this.data[this.data.length - 1];
+        lastId = lastPost._id;
+      } else {
+        lastId = null; // Reached the end
+      }
+      return lastId;
+    },
+    lastDate() {
+      let lastDate;
+      if (this.data.length > 0) {
+        const lastPost = this.data[this.data.length - 1];
+        lastDate = lastPost.date;
+      }
+      return lastDate;
+    },
+    endOfResults() {
+      if (this.data.length < 6) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    showNextLink() {
+      if (!this.endOfResults) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    showPrevLink() {
+      if (this.pagination > 1) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+  methods: {
+    async getPrevPosts() {
+      const lastId = this.lastId;
+      const lastDate = this.lastDate;
+      this.pagination = this.pagination - 1;
+      const testQuery = groq`*[_type == "posts" && (
+      date > $lastDate
+      || (date == $lastDate && _id > $lastId)
+    )] | order(date desc) [0...6] {
+       "slug": slug.current,
+        date,
+        title,
+        "img": {
+          "url": img.image.asset->url,
+          "alt": img.image.asset->altText
+        },
+        _id
+    }`;
+      // console.log(testQuery, { lastDate, lastId });
+      const data = await this.$sanity
+        .fetch(testQuery, { lastDate, lastId })
+        .then((res) => res);
+      this.data = data;
+    },
+    async getNextPosts() {
+      const lastId = this.lastId;
+      const lastDate = this.lastDate;
+      this.pagination = this.pagination + 1;
+      const testQuery = groq`*[_type == "posts" && (
+      date < $lastDate
+      || (date == $lastDate && _id < $lastId)
+    )] | order(date desc) [0...6] {
+       "slug": slug.current,
+        date,
+        title,
+        "img": {
+          "url": img.image.asset->url,
+          "alt": img.image.asset->altText
+        },
+        _id
+    }`;
+      // console.log(testQuery, { lastDate, lastId });
+      const data = await this.$sanity
+        .fetch(testQuery, { lastDate, lastId })
+        .then((res) => res);
+      this.data = data;
+    },
+  },
   data() {
     return {
-      postLoads: 1,
+      pagination: 1,
     };
   },
   async asyncData({ $sanity }) {
     const data = await $sanity.fetch(query).then((res) => res);
     return { data };
   },
+  components: { PageTitle, PostGrid },
 };
 </script>
-   
-<style lang="scss">
-.post-list {
-  margin-top: 60px;
-  display: flex;
-  justify-content: space-between;
-  .post-list-item {
-    text-align: center;
-    @media (min-width: $collapse-bp) {
-      flex: 0 0 30%;
-    }
-    @media (max-width: $collapse-bp) {
-      flex: 0 0 45%;
-    }
-    h3 {
-      margin-top: 24px;
-      @include postPreviewTitle;
-    }
-  }
-}
-</style>
   
