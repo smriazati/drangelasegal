@@ -1,5 +1,5 @@
 <template>
-  <div class="learn-page no-page-padding">
+  <div class="learn-page">
     <div v-if="data.video">
       <LearnFeaturedVids :data="data.video" />
     </div>
@@ -63,5 +63,8 @@ export default {
 </script>
   
 <style lang="scss">
+.learn-page {
+  padding-bottom: 0 !important;
+}
 </style>
   

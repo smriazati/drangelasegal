@@ -1,5 +1,5 @@
 <template>
-  <div class="cta-banner-wrapper">
+  <div class="contact-cta-banner-wrapper">
     <div class="text-wrapper">
       <h3>Connect with Angela</h3>
     </div>
@@ -22,7 +22,7 @@ export default {
 </script>
   
   <style lang="scss">
-.cta-banner-wrapper {
+.contact-cta-banner-wrapper {
   margin-top: 120px;
   background: $taupe;
   padding: 120px 26px;

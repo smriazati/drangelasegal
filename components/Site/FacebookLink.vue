@@ -1,6 +1,6 @@
 <template>
   <span v-if="content">
-    <a :href="`https://www.facebook.com/:${content.facebook}`">Facebook</a>
+    <a :href="`https://www.facebook.com/${content.facebook}`">Facebook</a>
   </span>
 </template>
   
