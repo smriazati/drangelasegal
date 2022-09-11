@@ -1,9 +1,6 @@
 <template>
   <span v-if="content">
-    <a :href="`mailto:${content.siteEmail}`">
-      <span v-if="text">{{ text }}</span>
-      <span v-else>{{ content.siteEmail }}</span>
-    </a>
+    <a :href="`https://www.facebook.com/:${content.facebook}`">Facebook</a>
   </span>
 </template>
   
@@ -11,7 +8,7 @@
 <script>
 import { groq } from "@nuxtjs/sanity";
 const query = groq`*[_type == "contactInfo"]{
-   siteEmail
+   facebook
   }[0]`;
 export default {
   async fetch() {
@@ -21,11 +18,5 @@ export default {
   data: () => ({
     content: null,
   }),
-  props: {
-    text: {
-      type: String,
-      required: false,
-    },
-  },
 };
 </script>

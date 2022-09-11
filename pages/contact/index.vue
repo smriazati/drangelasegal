@@ -1,21 +1,18 @@
 <template>
   <div class="contact-page page-container">
-    <div class="page-title">
-      <h1>Contact</h1>
-      <h2>Get in Touch</h2>
-      <p>
-        To connect about energy healing, please fill out the form below or
-        directly email <SiteEmailAddressLink />.
-      </p>
-    </div>
+    <ContactPageTitle />
     <div class="base-container">
-      <SiteContactForm successRoute="/contact/contact-success" />
+      <ContactForm successRoute="/contact/contact-success" />
     </div>
+    <ContactCTA />
   </div>
 </template>
-
+<script>
+export default {};
+</script>
 <style lang="scss">
 .contact-page {
+  padding-bottom: 0 !important;
   background: #fdfaf6;
 }
 </style>

@@ -329,6 +329,10 @@ main.site-main>div,
   h2 {
     @include headingStyle;
   }
+
+  p {
+    margin-top: 16px;
+  }
 }
 
 .rte {
@@ -444,4 +448,8 @@ main.site-main>div,
       margin-right: auto;
     }
   }
+}
+
+.ul-plain {
+  list-style: none;
 }
