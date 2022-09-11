@@ -1,20 +1,20 @@
 <template>
-  <span v-if="content">
-    <figure v-if="content.logo">
+  <div v-if="content" class="site-logo">
+    <figure v-if="content.mark">
       <img
-        :src="$urlFor(content.logo.url).size(width * 2)"
-        :alt="content.logo.alt"
+        :src="$urlFor(content.mark.url).size(width * 2)"
+        :alt="content.mark.alt"
         :width="width"
       />
     </figure>
-  </span>
+  </div>
 </template>
   
   
 <script>
 import { groq } from "@nuxtjs/sanity";
 const query = groq`*[_type == "brand"]{
-      "logo": {
+      "mark": {
        "url": siteLogo.image.asset->url,
        "alt": siteLogo.image.asset->altText
      } 
@@ -35,4 +35,3 @@ export default {
   }),
 };
 </script>
-  

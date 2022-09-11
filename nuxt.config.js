@@ -82,16 +82,12 @@ export default async () => {
     },
     googleFonts: {
       families: {
-        'Source Serif': {
-          wght: [400, 300],
-        },
-        'Source Sans': {
+        'Source Serif Pro': [300],
+        'Source Sans Pro': {
           wght: [400, 700],
           ital: [400]
         },
-        'Source Code Pro': {
-          wght: [400]
-        }
+        'Source Code Pro': [400]
       },
       display: 'swap',
       prefetch: true,

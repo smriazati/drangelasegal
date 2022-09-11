@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="footer-nav-primary">
     <ul>
       <li><nuxt-link to="/schedule">Schedule</nuxt-link></li>
       <li><nuxt-link to="/offerings">Offerings</nuxt-link></li>
@@ -11,3 +11,18 @@
 </template>
   
   
+<style lang="scss">
+.footer-nav-primary {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  ul {
+    > li {
+      @include textStyle;
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+    }
+  }
+}
+</style>

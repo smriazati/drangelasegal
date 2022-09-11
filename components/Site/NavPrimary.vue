@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="nav-primary">
     <ul>
       <li><nuxt-link to="/offerings">Offerings</nuxt-link></li>
       <li><nuxt-link to="/learn">Learn</nuxt-link></li>

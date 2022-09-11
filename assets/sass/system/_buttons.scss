@@ -12,3 +12,12 @@ $btnTransition: .25s ease-in all;
     cursor: pointer;
   }
 }
+
+@mixin btnUnderline() {
+  border-bottom: 1px solid $black;
+  transition: .3s ease all;
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+}

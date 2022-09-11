@@ -7,7 +7,6 @@
 <script>
 import { groq } from "@nuxtjs/sanity";
 const query = groq`
-*[_type in ["energyHealing"]][0]{
   "about": {
     "title": about.title,
     "text_large": about.text_large,

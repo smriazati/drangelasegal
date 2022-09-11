@@ -1,5 +1,6 @@
 $collapse-bp: 980px;
 $container-width: 1440px;
+$lg-bp: 1600px;
 
 @mixin baseContainer() {
   max-width: $container-width;

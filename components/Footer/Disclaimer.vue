@@ -1,15 +1,17 @@
-<template></template>
-
 <template>
-  <div>
-    <div v-if="content">
+  <div class="footer-disclaimer">
+    <div v-if="content" class="disclaimer">
       <p>{{ content.disclaimer }}</p>
     </div>
-    <div>
-      2022 Angela Segal, PHD.
-      <a href="https://otherlove.co" target="_blank">Made with Otherlove</a>
+    <div class="copyright">
+      <div class="flex-row">
+        <p>2022 Angela Segal, PHD.</p>
+        <p>
+          <a href="https://otherlove.co" target="_blank">Made with Otherlove</a>
+        </p>
+      </div>
     </div>
-    <nav>
+    <nav class="footer-nav-secondary">
       <ul display="flex">
         <li><nuxt-link to="/terms">Terms of Use</nuxt-link></li>
         <li><nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link></li>
@@ -35,3 +37,40 @@ export default {
 };
 </script>
     
+
+<style lang="scss">
+.footer-disclaimer {
+  margin-top: 60px;
+  .disclaimer {
+    max-width: 1040px;
+    margin: 0 auto;
+    p {
+      @include footerText;
+    }
+  }
+  .copyright {
+    margin-top: 24px;
+  }
+  .copyright p,
+  .copyright p a,
+  .footer-nav-secondary li,
+  .footer-nav-secondary li a {
+    @include footerDetailText;
+  }
+  .copyright p,
+  .footer-nav-secondary li {
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+  .copyright,
+  .footer-nav-secondary {
+    display: flex;
+    justify-content: center;
+  }
+  .footer-nav-secondary li:not(:last-child):after {
+    content: "|";
+    margin-left: 8px;
+  }
+}
+</style>

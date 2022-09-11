@@ -1,10 +1,11 @@
 <template>
   <div class="layout-wrapper layout-error">
-    <div class="base-container flex-col flex-col-center">
-      <h1 class="display-style" v-if="error.statusCode === 404">
-        This page doesn't exist
+    <div class="page-container flex-col flex-col-center">
+      <h1 class="heading-style" v-if="error.statusCode === 404">
+        Sorry, we can’t find that page!
       </h1>
-      <h1 class="display-style" v-else>An error occurred</h1>
+      <h1 class="heading-style" v-else>An error occurred</h1>
+      <nuxt-link class="btn-underline"><span>Back to Home</span></nuxt-link>
     </div>
   </div>
 </template>

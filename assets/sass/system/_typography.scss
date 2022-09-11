@@ -1,17 +1,17 @@
 // typeface
 @mixin serifTypeface() {
-  font-family: 'Source Serif', serif;
+  font-family: 'Source Serif Pro', serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 @mixin sansSerifTypeface() {
-  font-family: 'Source Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
 }
 
 @mixin monoTypeface() {
-  font-family: 'Source Sans Code', sans-serif;
+  font-family: 'Source Code Pro', sans-serif;
   font-weight: 400;
 }
 
@@ -26,6 +26,7 @@
 
 @mixin headingStyle() {
   @include serifTypeface();
+  font-size: 44px;
   font-weight: 300;
   line-height: 55px;
   letter-spacing: 0.02em;
@@ -50,10 +51,13 @@
 
 @mixin textStyle() {
   @include sansSerifTypeface();
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
-  line-height: 26px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
 }
+
+
 
 @mixin quoteStyle() {
   @include sansSerifTypeface();
@@ -88,6 +92,7 @@
   font-weight: 400;
   line-height: 13px;
   letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 @mixin footerNav() {
@@ -123,7 +128,7 @@
 }
 
 @mixin postPreviewTitle() {
-  @include sansSerifTypeface();
+  @include serifTypeface();
   font-size: 24px;
   font-weight: 300;
   line-height: 29px;
@@ -135,6 +140,9 @@
 }
 
 @mixin inputStyle() {
-  background: $white;
-
+  @include monoTypeface();
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.02em;
 }
