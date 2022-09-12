@@ -1,11 +1,11 @@
 <template>
-  <div class="layout-wrapper layout-error">
-    <div class="page-container flex-col flex-col-center">
-      <h1 class="heading-style" v-if="error.statusCode === 404">
+  <div class="pgae-container">
+    <div class="text-wrapper text-center">
+      <h1 v-if="error.statusCode === 404" class="heading-style mb-48">
         Sorry, we can’t find that page!
       </h1>
-      <h1 class="heading-style" v-else>An error occurred</h1>
-      <nuxt-link class="btn-underline"><span>Back to Home</span></nuxt-link>
+      <h1 v-else class="heading-style mb-48">An error occurred</h1>
+      <NuxtLink to="/" class="btn-underline">Back to Home</NuxtLink>
     </div>
   </div>
 </template>
@@ -13,10 +13,6 @@
   <script>
 export default {
   props: ["error"],
-  name: "Error",
-  mounted() {
-    console.log("ERROR", this.error);
-  },
+  layout: "error", // you can set a custom layout for the error page
 };
 </script>
-  

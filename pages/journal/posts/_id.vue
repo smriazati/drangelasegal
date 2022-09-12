@@ -121,7 +121,10 @@ export default {
         month: "long",
         day: "numeric",
       };
-      var date = new Date(this.post.date);
+      let dateString = `${this.post.date}T00:00:00`;
+      dateString = dateString.replace(/-/g, "/").replace(/T.+/, "");
+
+      var date = new Date(dateString);
       return date.toLocaleDateString("en-US", options);
     },
   },
