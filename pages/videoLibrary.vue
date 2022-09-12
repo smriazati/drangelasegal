@@ -10,7 +10,11 @@
         v-for="(item, index) in data.videos"
         :key="`${item.id}${index}`"
         :item="item"
+        @open-lightbox="setActiveModal(item)"
       />
+    </div>
+    <div v-if="activeModal">
+      <VideoLightbox :data="activeModal" @close-lightbox="unsetActiveModal()" />
     </div>
   </div>
 </template>
@@ -39,6 +43,19 @@ export default {
     return {
       title: "Video Library",
     };
+  },
+  data() {
+    return {
+      activeModal: undefined,
+    };
+  },
+  methods: {
+    setActiveModal(payload) {
+      this.activeModal = payload;
+    },
+    unsetActiveModal() {
+      this.activeModal = undefined;
+    },
   },
   async asyncData({ $sanity }) {
     const data = await $sanity.fetch(query).then((res) => res);

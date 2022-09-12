@@ -63,7 +63,7 @@ export default async () => {
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
-      "~/plugins/sanityImage.js", "~/plugins/sanity.js"
+      "~/plugins/sanityImage.js", "~/plugins/sanity.js", "~/plugins/vimeo.js"
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
@@ -120,7 +120,10 @@ export default async () => {
       extractCSS: true,
       loaders: {
         limit: 0,
-      }
+      },
+      vendor: [
+        'vue-vimeo-player'
+      ],
     },
   }
 }

@@ -10,7 +10,11 @@
         v-for="(item, index) in data.videos"
         :key="`${item.id}${index}`"
         :item="item"
+        @open-lightbox="setActiveModal(item)"
       />
+    </div>
+    <div v-if="activeModal">
+      <VideoLightbox :data="activeModal" @close-lightbox="unsetActiveModal()" />
     </div>
     <div class="button-wrapper text-center">
       <nuxt-link to="/videolibrary" class="btn-underline"
@@ -25,6 +29,19 @@ export default {
     data: {
       type: Object,
       required: true,
+    },
+  },
+  data() {
+    return {
+      activeModal: undefined,
+    };
+  },
+  methods: {
+    setActiveModal(payload) {
+      this.activeModal = payload;
+    },
+    unsetActiveModal() {
+      this.activeModal = undefined;
     },
   },
 };

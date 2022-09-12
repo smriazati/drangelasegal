@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     setActiveModal(payload) {
-      console.log(payload);
+      // console.log(payload);
+      this.$emit("open-lightbox", payload);
     },
   },
 };
