@@ -1,0 +1,78 @@
+<template>
+  <div class="offering-item">
+    <div class="offering-item-wrapper">
+      <div class="offering-content">
+        <div class="text-wrapper text-center page-title">
+          <h1 class="title-style">Offerings</h1>
+          <h2 v-if="data.title" class="heading-style">{{ data.title }}</h2>
+          <p v-if="data.desc">
+            {{ data.desc }}
+          </p>
+        </div>
+        <div v-if="data.events" class="events-wrapper text-center">
+          <h3 class="title-style">Upcoming Events</h3>
+          <div class="event-list">
+            <div
+              v-for="item in data.events"
+              :key="item._id"
+              class="event-list-item"
+            >
+              <h4 v-if="item.name" class="post-preview-title-style">
+                {{ item.name }}
+              </h4>
+              <p v-if="item.when" class="title-style-lower">{{ item.when }}</p>
+              <p v-if="item.where" class="title-style-lower">
+                {{ item.where }}
+              </p>
+              <div v-if="item.button" class="button-wrapper">
+                <SystemLinkObject :data="item.button" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+  },
+};
+</script>
+<style lang="scss">
+.offering-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .offering-content {
+    @include glowBox;
+    max-width: 684px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .events-wrapper {
+      margin-top: 60px;
+      .event-list {
+        margin-top: 40px;
+        .event-list-item {
+          margin-bottom: 50px;
+          p,
+          .button-wrapper {
+            margin-top: 12px;
+          }
+          a {
+            @include linkUnderline;
+          }
+        }
+      }
+    }
+  }
+}
+</style>

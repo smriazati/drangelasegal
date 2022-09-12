@@ -1,6 +1,65 @@
 <template>
-  <div>
-    {{ data }}
+  <div class="offerings-page no-page-padding">
+    <div class="offerings-bg-imgs stacked-divs">
+      <div
+        v-if="data.offering1"
+        :class="activeOffering === 1 ? 'show' : 'hide'"
+        :style="`background-image: url(${data.offering1.img.url})`"
+        class="bg-full-width bg-fixed"
+      ></div>
+      <div
+        v-if="data.offering1"
+        :class="activeOffering === 2 ? 'show' : 'hide'"
+        :style="`background-image: url(${data.offering2.img.url})`"
+        class="bg-full-width bg-fixed"
+      ></div>
+      <div
+        v-if="data.offering1"
+        :class="activeOffering === 3 ? 'show' : 'hide'"
+        :style="`background-image: url(${data.offering3.img.url})`"
+        class="bg-full-width bg-fixed"
+      ></div>
+      <div
+        v-if="data.offering1"
+        :class="activeOffering === 4 ? 'show' : 'hide'"
+        :style="`background-image: url(${data.offering4.img.url})`"
+        class="bg-full-width bg-fixed"
+      ></div>
+    </div>
+
+    <div class="offerings-page-wrapper">
+      <button @click="setActiveOffering(1)"><span>Workshops</span></button>
+      <button @click="setActiveOffering(2)"><span>Individuals</span></button>
+      <button @click="setActiveOffering(3)"><span>Corporate</span></button>
+      <button @click="setActiveOffering(4)"><span>Events</span></button>
+
+      <div class="offerings-wrapper stacked-divs">
+        <div
+          v-if="data.offering1"
+          :class="activeOffering === 1 ? 'show' : 'hide'"
+        >
+          <OfferingItem :data="data.offering1" />
+        </div>
+        <div
+          v-if="data.offering2"
+          :class="activeOffering === 2 ? 'show' : 'hide'"
+        >
+          <OfferingItem :data="data.offering2" />
+        </div>
+        <div
+          v-if="data.offering3"
+          :class="activeOffering === 3 ? 'show' : 'hide'"
+        >
+          <OfferingItem :data="data.offering3" />
+        </div>
+        <div
+          v-if="data.offering4"
+          :class="activeOffering === 4 ? 'show' : 'hide'"
+        >
+          <OfferingItem :data="data.offering4" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
   
@@ -39,7 +98,7 @@ const query = groq`
         "url": offering_4.img.image.asset->url,
         "alt": offering_4.img.image.asset->altText
       },
-    "events": offering_4.events[]->{name, when, where,button}
+    "events": offering_4.events[]->{_id, name, when, where, button}
   }
 }
   `;
@@ -54,7 +113,176 @@ export default {
     const data = await $sanity.fetch(query).then((res) => res);
     return { data };
   },
+  data() {
+    return {
+      activeOffering: 1,
+    };
+  },
+  computed: {
+    activeOfferingImg() {
+      if (this.activeOffering == 1) {
+        return this.data.offering1.img.url;
+      }
+      if (this.activeOffering == 2) {
+        return this.data.offering2.img.url;
+      }
+      if (this.activeOffering == 3) {
+        return this.data.offering3.img.url;
+      }
+      if (this.activeOffering == 4) {
+        return this.data.offering4.img.url;
+      }
+      return null;
+    },
+  },
+  methods: {
+    setActiveOffering(index) {
+      this.activeOffering = index;
+    },
+  },
 };
 </script>
   
-  
+  <style lang="scss">
+.offerings-page {
+  position: relative;
+  .offerings-bg-imgs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    > div {
+      transition: 2s ease opacity;
+      &.show {
+        opacity: 1;
+      }
+      &.hide {
+        opacity: 0;
+      }
+    }
+  }
+}
+.offerings-page-wrapper {
+  padding: 65px 16px;
+  display: grid;
+  grid-template-columns: 1fr minmax(720px, 1fr) 1fr;
+  grid-template-rows: 1fr auto 1fr;
+  overflow: hidden;
+  button {
+    position: relative;
+  }
+  button:nth-child(1) {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+  button:nth-child(2) {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+  button:nth-child(3) {
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+  }
+  button:nth-child(4) {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+  }
+  .offerings-wrapper {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+  }
+
+  button {
+    display: flex;
+    span {
+      @include inputStyle;
+      color: $white;
+    }
+    &:before {
+      content: "";
+      background: url("/chevron-up.svg") center center no-repeat;
+      width: 20px;
+      height: 20px;
+    }
+
+    &:nth-child(1) {
+      align-items: center;
+      span {
+        margin-left: 12px;
+      }
+      &:before {
+        transform: rotate(-90deg);
+      }
+    }
+    &:nth-child(2) {
+      flex-direction: column;
+      align-items: center;
+      span {
+        margin-top: 12px;
+      }
+      &:before {
+        transform: rotate(0deg);
+      }
+    }
+    &:nth-child(3) {
+      flex-direction: row-reverse;
+      align-items: center;
+      span {
+        margin-right: 12px;
+      }
+      &:before {
+        transform: rotate(90deg);
+      }
+    }
+    &:nth-child(4) {
+      flex-direction: column-reverse;
+      align-items: center;
+      span {
+        margin-bottom: 12px;
+      }
+      &:before {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+.offerings-wrapper {
+  > div {
+    display: flex;
+    transition: 1s ease transform;
+    justify-content: center;
+    margin: 52px;
+    &.show {
+      transform: translateX(0) translateY(0);
+      height: auto;
+    }
+  }
+  > * {
+    &.hide {
+      height: 0;
+    }
+  }
+  > *:nth-child(1) {
+    &.hide {
+      transform: translateX(-100vw) translateY(0);
+    }
+  }
+  > *:nth-child(2) {
+    &.hide {
+      transform: translateX(0) translateY(calc(-100vh - $headerHeight));
+    }
+  }
+  > *:nth-child(3) {
+    &.hide {
+      transform: translateX(100vw) translateY(0);
+    }
+  }
+  > *:nth-child(4) {
+    &.hide {
+      transform: translateX(0) translateY(calc(100vh + $headerHeight));
+    }
+  }
+  // 1 workshops, 2 individuals, 3 corporate, 4 events
+}
+</style>
