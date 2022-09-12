@@ -92,7 +92,7 @@ export default {
       const testQuery = groq`*[_type == "posts" && (
         date > $lastDate
         || (date == $lastDate && _id > $lastId)
-      )] | order(date desc) [0] {
+      )] | order(date asc) [0] {
          "slug": slug.current
       }`;
       const data = await this.$sanity

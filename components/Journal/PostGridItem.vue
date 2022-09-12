@@ -26,6 +26,7 @@
         <h3 v-if="item.title">
           {{ item.title }}
         </h3>
+        <!-- {{ item.date }} -->
       </div>
     </nuxt-link>
   </div>

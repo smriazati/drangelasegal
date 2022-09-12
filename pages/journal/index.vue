@@ -43,24 +43,6 @@ export default {
     };
   },
   computed: {
-    lastId() {
-      let lastId;
-      if (this.data.length > 0) {
-        const lastPost = this.data[this.data.length - 1];
-        lastId = lastPost._id;
-      } else {
-        lastId = null; // Reached the end
-      }
-      return lastId;
-    },
-    lastDate() {
-      let lastDate;
-      if (this.data.length > 0) {
-        const lastPost = this.data[this.data.length - 1];
-        lastDate = lastPost.date;
-      }
-      return lastDate;
-    },
     endOfResults() {
       if (this.data.length < 6) {
         return true;
@@ -93,13 +75,14 @@ export default {
       });
     },
     async getPrevPosts() {
-      const lastId = this.lastId;
-      const lastDate = this.lastDate;
       this.pagination = this.pagination - 1;
+      const lastPostId = this.data[0]._id;
+      const lastPostDate = this.data[0].date;
+
       const testQuery = groq`*[_type == "posts" && (
-      date > $lastDate
-      || (date == $lastDate && _id > $lastId)
-    )] | order(date desc) [0...6] {
+      date > $lastPostDate
+      || (date == $lastPostDate && _id > $lastPostId)
+    )] | order(date asc) [0...6] {
        "slug": slug.current,
         date,
         title,
@@ -109,20 +92,38 @@ export default {
         },
         _id
     }`;
-      // console.log(testQuery, { lastDate, lastId });
+
       const data = await this.$sanity
-        .fetch(testQuery, { lastDate, lastId })
-        .then((res) => res);
+        .fetch(testQuery, { lastPostDate, lastPostId })
+        .then((res) => res.reverse());
       this.data = data;
       this.scrollToTop();
     },
+    savePaginationIds() {
+      let lastPostId;
+      if (this.data.length > 0) {
+        const lastPost = this.data[this.data.length - 1];
+        lastPostId = lastPost._id;
+      } else {
+        lastPostId = null; // Reached the end
+      }
+      this.lastPostId = lastPostId;
+
+      let lastPostDate;
+      if (this.data.length > 0) {
+        const lastPost = this.data[this.data.length - 1];
+        lastPostDate = lastPost.date;
+      }
+
+      this.lastPostDate = lastPostDate;
+    },
     async getNextPosts() {
-      const lastId = this.lastId;
-      const lastDate = this.lastDate;
+      this.savePaginationIds();
       this.pagination = this.pagination + 1;
+
       const testQuery = groq`*[_type == "posts" && (
-      date < $lastDate
-      || (date == $lastDate && _id < $lastId)
+      date < $lastPostDate
+      || (date == $lastPostDate && _id < $lastPostId)
     )] | order(date desc) [0...6] {
        "slug": slug.current,
         date,
@@ -133,9 +134,10 @@ export default {
         },
         _id
     }`;
-      // console.log(testQuery, { lastDate, lastId });
+      const lastPostId = this.lastPostId;
+      const lastPostDate = this.lastPostDate;
       const data = await this.$sanity
-        .fetch(testQuery, { lastDate, lastId })
+        .fetch(testQuery, { lastPostDate, lastPostId })
         .then((res) => res);
       this.data = data;
       this.scrollToTop();
@@ -144,6 +146,8 @@ export default {
   data() {
     return {
       pagination: 1,
+      lastPostId: undefined,
+      lastPostDate: undefined,
     };
   },
   async asyncData({ $sanity }) {

@@ -1,11 +1,11 @@
 <template>
   <div v-if="data" class="post-list">
-    <PostItem v-for="item in data" :key="item._id" :item="item" />
+    <PostGridItem v-for="item in data" :key="item._id" :item="item" />
   </div>
 </template>
 
 <script>
-import PostItem from "../../components/Journal/PostItem.vue";
+import PostGridItem from "../../components/Journal/PostGridItem.vue";
 
 export default {
   props: {
@@ -14,6 +14,6 @@ export default {
       required: true,
     },
   },
-  components: { PostItem },
+  components: { PostGridItem },
 };
 </script>
