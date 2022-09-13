@@ -1,17 +1,22 @@
 <template>
-  <div class="video-lightbox">
+  <div class="video-lightbox" ref="top">
     <div class="stacked-divs">
       <div class="video-lightbox-wrapper">
         <div class="close-overlay" @click="closeLightbox">
           <button class="btn-underline">Close</button>
         </div>
         <div class="embed-wrapper">
+          <div v-if="isLoading">
+            <p class="input-style">Loading Video...</p>
+          </div>
           <client-only>
             <vimeo-player
               ref="player"
               :video-id="data.id"
               :options="options"
+              @ready="playerReady()"
               class="video-player"
+              :class="isLoading ? 'hide' : 'show'"
             />
           </client-only>
         </div>
@@ -37,41 +42,64 @@ export default {
         byline: false,
         portrait: false,
       },
+      isLoading: true,
     };
   },
   mounted() {
     document.addEventListener("keydown", (e) => {
-      //   console.log("keydown", e.keyCode);
       if (e.keyCode === 27) {
         this.closeLightbox();
       }
     });
+
+    this.scrollToTop();
   },
   methods: {
+    scrollToTop() {
+      const element = this.$refs.top;
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    },
     closeLightbox(payload) {
       // console.log(payload);
       this.$emit("close-lightbox", payload);
+    },
+    playerReady() {
+      // console.log("im ready", this.$refs.player);
+      this.isLoading = false;
     },
   },
 };
 </script>
 
 <style lang="scss">
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
 .video-lightbox {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 11;
   .close-overlay {
-    position: absolute;
+    position: fixed;
+    height: 100%;
+    width: 100%;
     top: 0;
     left: 0;
+    opacity: 0;
+    animation: fadeIn 0.3s cubic-bezier(0.44, 0.66, 0.4, 0.89) forwards;
     background: $grey-brown;
-    opacity: 0.8;
-    width: 100%;
-    height: 100vh;
     &:hover {
       cursor: pointer;
     }
@@ -97,7 +125,10 @@ export default {
       place-self: center;
       width: 100%;
       height: 100%;
-      display: flex;
+      @include stackedDivs;
+      place-items: center;
+      text-align: center;
+      color: $white;
       max-width: 895px;
     }
     .text-wrapper {
@@ -106,11 +137,19 @@ export default {
       grid-column: 2 / 3;
       color: $white;
       text-align: center;
+      margin-top: 24px;
     }
   }
 }
 
 .video-player {
+  transition: 0.3s ease-in opacity;
+  &.show {
+    opacity: 1;
+  }
+  &.hide {
+    opacity: 0;
+  }
   position: relative;
   overflow: hidden;
   width: 100%;

@@ -1,0 +1,56 @@
+// source sans
+
+
+@font-face {
+    font-family: 'Source Sans 3';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('../fonts/source-sans/WOFF2/TTF/SourceSans3-Regular.ttf.woff2') format('woff2'),
+        url('../fonts/source-sans/WOFF/OTF/SourceSans3-Regular.otf.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('../fonts/source-sans/WOFF2/TTF/SourceSans3-It.ttf.woff2') format('woff2'),
+        url('../fonts/source-sans/WOFF/OTF/SourceSans3-It.otf.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('../fonts/source-sans/WOFF2/TTF/SourceSans3-Bold.ttf.woff2') format('woff2'),
+        url('../fonts/source-sans/WOFF/OTF/SourceSans3-Bold.otf.woff') format('woff');
+}
+
+// source serif
+
+@font-face {
+    font-family: 'Source Serif';
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('../fonts/source-serif/WOFF2/TTF/SourceSerif4-Light.ttf.woff2') format('woff2'),
+        url('../fonts/source-serif/WOFF/OTF/SourceSerif4-Light.otf.woff') format('woff'),
+        url('../fonts/source-serif/OTF/SourceSerif4-Light.otf') format('opentype'),
+        url('../fonts/source-serif/TTF/SourceSerif4-Light.ttf') format('truetype');
+}
+
+// source code pro
+
+@font-face {
+    font-family: 'Source Code Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('../fonts/source-code-pro/WOFF2/TTF/SourceCodePro-Regular.ttf.woff2') format('woff2'),
+        url('../fonts/source-code-pro/WOFF/OTF/SourceCodePro-Regular.otf.woff') format('woff'),
+        url('../fonts/source-code-pro/OTF/SourceCodePro-Regular.otf') format('opentype'),
+        url('../fonts/source-code-pro/TTF/SourceCodePro-Regular.ttf') format('truetype');
+}

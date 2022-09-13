@@ -1,6 +1,10 @@
 <template>
   <div class="index-page no-page-padding">
-    <HomeBanner />
+    <div class="home-banner-container">
+      <div v-if="data.banner">
+        <HomeBanner :data="data.banner" />
+      </div>
+    </div>
     <div v-if="data.power_up">
       <HomePowerUp :data="data.power_up" />
     </div>
@@ -22,6 +26,20 @@
 import { groq } from "@nuxtjs/sanity";
 const query = groq`
 *[_type in ["home"]][0]{
+  "banner": {
+    "img1": {
+      "url": banner.img1.image.asset->url,
+      "alt": banner.img1.image.asset->altText
+    },
+    "img2": {
+      "url": banner.img2.image.asset->url,
+      "alt": banner.img2.image.asset->altText
+    },
+    "img3": {
+      "url": banner.img3.image.asset->url,
+      "alt": banner.img3.image.asset->altText
+    },
+  },
   power_up,
   "callout_left": {
     "img": {
@@ -64,4 +82,13 @@ export default {
 </script>
 
 <style lang="scss">
+.home-banner-container {
+  background: $sand;
+  height: calc(100vh - $headerHeight);
+  max-height: calc(100vh - $headerHeight);
+  overflow: hidden;
+  > div {
+    height: 100%;
+  }
+}
 </style>

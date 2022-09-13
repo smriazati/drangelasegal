@@ -3,12 +3,64 @@
     <h1 class="visually-hidden">
       {{ content?.siteTitle || "Dr. Angela Segal" }}
     </h1>
-    <div class="desktop-nav">
+    <div v-if="isDesktop" class="desktop-nav">
       <nuxt-link to="/" class="site-logo">
         <SiteLogo :width="378" />
       </nuxt-link>
       <SiteNavPrimary />
       <SiteNavSecondary />
+    </div>
+
+    <div v-if="!isDesktop" class="mobile-nav" ref="mobileMenu">
+      <button @click="toggleNav()">
+        <span v-if="!isMobileNavExpanded">Menu</span>
+        <span v-else>Close</span>
+      </button>
+      <div class="mobile-nav-wrapper">
+        <nuxt-link to="/" class="site-logo">
+          <SiteLogo :width="236" />
+        </nuxt-link>
+      </div>
+      <div class="collapse-area" :class="isMobileNavExpanded ? 'show' : 'hide'">
+        <nav class="nav-primary">
+          <ul>
+            <li @click="toggleNav()">
+              <nuxt-link to="/offerings">Offerings</nuxt-link>
+            </li>
+            <li @click="toggleNav()">
+              <nuxt-link to="/learn">Learn</nuxt-link>
+            </li>
+            <li @click="toggleNav()">
+              <nuxt-link to="/journal">Journal</nuxt-link>
+            </li>
+            <li @click="toggleNav()">
+              <nuxt-link to="/about">Meet Angela</nuxt-link>
+            </li>
+            <li @click="toggleNav()">
+              <nuxt-link to="/energy-healing">
+                What is Energy Healing?
+              </nuxt-link>
+            </li>
+          </ul>
+        </nav>
+        <nav class="nav-secondary">
+          <ul>
+            <li @click="toggleNav()">
+              <nuxt-link to="/schedule">Schedule</nuxt-link>
+            </li>
+            <li @click="toggleNav()">
+              <nuxt-link to="/contact">Contact</nuxt-link>
+            </li>
+            <li @click="toggleNav()"><SiteInstagramLink /></li>
+            <li @click="toggleNav()"><SiteFacebookLink /></li>
+          </ul>
+        </nav>
+        <div>
+          <nuxt-link to="/" class="site-logo">
+            <SiteMark :width="60" />
+          </nuxt-link>
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -23,9 +75,35 @@ export default {
     this.content = await this.$sanity.fetch(query);
   },
   fetchOnServer: false,
+  mounted: function () {
+    this.$nextTick(function () {
+      this.onResize();
+    });
+    window.addEventListener("resize", this.onResize);
+  },
+  unmounted: function () {
+    window.removeEventListener("resize", this.onResize);
+  },
   data: () => ({
     content: null,
+    isDesktop: true,
+    isMobileNavExpanded: false,
   }),
+  methods: {
+    onResize() {
+      this.setCurrentNav();
+    },
+    toggleNav() {
+      this.isMobileNavExpanded = !this.isMobileNavExpanded;
+    },
+    setCurrentNav() {
+      if (window.innerWidth > 800) {
+        this.isDesktop = true;
+      } else {
+        this.isDesktop = false;
+      }
+    },
+  },
 };
 </script>
       
@@ -69,6 +147,79 @@ header.site-header {
       display: flex;
       justify-content: center;
       margin-bottom: 40px;
+    }
+  }
+
+  .mobile-nav {
+    > button {
+      position: absolute;
+      top: 8px;
+      width: 100%;
+      text-align: center;
+      z-index: 201;
+      span {
+        @include navSecondaryStyle;
+      }
+    }
+    .mobile-nav-wrapper {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      padding-top: 44px;
+      padding-bottom: 22px;
+    }
+    .collapse-area {
+      transition: 0.5s ease all;
+      position: absolute;
+      z-index: 11;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100%;
+      background: $sunlight;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      &.hide {
+        transform: translateY(-100vh);
+      }
+      &.show {
+        transform: translateY(0vh);
+      }
+
+      nav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .nav-primary {
+        margin-bottom: 48px;
+        li:not(:last-child) {
+          margin-bottom: 24px;
+        }
+        a {
+          @include serifTypeface;
+          font-size: 30px;
+          font-weight: 300;
+          line-height: 38px;
+          letter-spacing: 0.02em;
+          color: #000;
+        }
+      }
+      .nav-secondary {
+        margin-bottom: 80px;
+        li:not(:last-child) {
+          margin-bottom: 12px;
+        }
+        a {
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 19px;
+          letter-spacing: 0.12em;
+          color: #000;
+        }
+      }
     }
   }
 }

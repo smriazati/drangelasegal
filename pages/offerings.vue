@@ -1,28 +1,36 @@
 <template>
-  <div class="offerings-page no-page-padding">
+  <div class="offerings-page no-page-padding" ref="top">
     <div class="offerings-bg-imgs stacked-divs">
       <div
         v-if="data.offering1"
         :class="activeOffering === 1 ? 'show' : 'hide'"
-        :style="`background-image: url(${data.offering1.img.url})`"
+        :style="`background-image: url(${$urlFor(data.offering1.img.url)
+          .width(2000)
+          .auto('format')})`"
         class="bg-full-width bg-fixed"
       ></div>
       <div
         v-if="data.offering1"
         :class="activeOffering === 2 ? 'show' : 'hide'"
-        :style="`background-image: url(${data.offering2.img.url})`"
+        :style="`background-image: url(${$urlFor(data.offering2.img.url)
+          .width(2000)
+          .auto('format')})`"
         class="bg-full-width bg-fixed"
       ></div>
       <div
         v-if="data.offering1"
         :class="activeOffering === 3 ? 'show' : 'hide'"
-        :style="`background-image: url(${data.offering3.img.url})`"
+        :style="`background-image: url(${$urlFor(data.offering3.img.url)
+          .width(2000)
+          .auto('format')})`"
         class="bg-full-width bg-fixed"
       ></div>
       <div
         v-if="data.offering1"
         :class="activeOffering === 4 ? 'show' : 'hide'"
-        :style="`background-image: url(${data.offering4.img.url})`"
+        :style="`background-image: url(${$urlFor(data.offering4.img.url)
+          .width(2000)
+          .auto('format')})`"
         class="bg-full-width bg-fixed"
       ></div>
     </div>
@@ -138,6 +146,16 @@ export default {
   methods: {
     setActiveOffering(index) {
       this.activeOffering = index;
+      this.scrollTop();
+    },
+    scrollTop() {
+      const element = this.$refs.top;
+      console.log("hi,", element);
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
     },
   },
 };
@@ -205,14 +223,18 @@ export default {
       width: 20px;
       height: 20px;
     }
-
+    $animationDistance: 1rem;
     &:nth-child(1) {
       align-items: center;
       span {
         margin-left: 12px;
       }
       &:before {
-        transform: rotate(-90deg);
+        transform: rotate(-90deg) translateY(0);
+        transition: 0.3s ease all;
+      }
+      &:hover:before {
+        transform: rotate(-90deg) translateY(-($animationDistance));
       }
     }
     &:nth-child(2) {
@@ -222,7 +244,11 @@ export default {
         margin-top: 12px;
       }
       &:before {
-        transform: rotate(0deg);
+        transform: rotate(0deg) translateY(0);
+        transition: 0.3s ease all;
+      }
+      &:hover:before {
+        transform: rotate(0deg) translateY(-($animationDistance));
       }
     }
     &:nth-child(3) {
@@ -232,7 +258,11 @@ export default {
         margin-right: 12px;
       }
       &:before {
-        transform: rotate(90deg);
+        transform: rotate(90deg) translateY(0);
+        transition: 0.3s ease all;
+      }
+      &:hover:before {
+        transform: rotate(90deg) translateY(-($animationDistance));
       }
     }
     &:nth-child(4) {
@@ -242,7 +272,11 @@ export default {
         margin-bottom: 12px;
       }
       &:before {
-        transform: rotate(180deg);
+        transform: rotate(180deg) translateY(0);
+        transition: 0.3s ease all;
+      }
+      &:hover:before {
+        transform: rotate(180deg) translateY(-($animationDistance));
       }
     }
   }

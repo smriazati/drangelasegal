@@ -14,7 +14,7 @@
     <nav class="footer-nav-secondary">
       <ul display="flex">
         <li><nuxt-link to="/terms">Terms of Use</nuxt-link></li>
-        <li><nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link></li>
+        <li><nuxt-link to="/privacy">Privacy Policy</nuxt-link></li>
       </ul>
     </nav>
   </div>

@@ -32,9 +32,40 @@ $btnTransition: .25s ease-in all;
 }
 
 @mixin btnFill() {
-  background: $golden;
+  // background: $golden;
   @include inputStyle;
   text-transform: uppercase;
   color: $white;
+  background: $golden;
   padding: 22px 36px;
+
+  &[disabled] {
+    opacity: .4;
+  }
+
+  position: relative;
+  overflow: hidden;
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:before {
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $golden;
+    background: linear-gradient(90deg, #AC8B55 0%, #F3EEE7 100%);
+    position: absolute;
+    transform: translateX(100%);
+    transition: .5s cubic-bezier(.44, .66, .4, .89) all;
+  }
+
+  &:hover:before {
+    transform: translateX(0%);
+  }
+
 }

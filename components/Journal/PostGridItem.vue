@@ -1,6 +1,6 @@
 <template>
   <div class="post-list-item">
-    <nuxt-link :to="`/journal/posts/${item.slug}`">
+    <nuxt-link :to="`/journal/post/${item.slug}`">
       <div class="image-wrapper">
         <figure v-if="item.img.url">
           <img

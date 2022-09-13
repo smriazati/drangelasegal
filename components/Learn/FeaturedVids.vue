@@ -5,19 +5,11 @@
       <h2>{{ data.subhead }}</h2>
       <p>{{ data.text }}</p>
     </div>
-    <div class="featured-videos-wrapper video-list">
-      <VideoThumbnail
-        v-for="(item, index) in data.videos"
-        :key="`${item.id}${index}`"
-        :item="item"
-        @open-lightbox="setActiveModal(item)"
-      />
-    </div>
-    <div v-if="activeModal">
-      <VideoLightbox :data="activeModal" @close-lightbox="unsetActiveModal()" />
+    <div class="featured-videos-wrapper">
+      <VideoList :data="data.videos" />
     </div>
     <div class="button-wrapper text-center">
-      <nuxt-link to="/videolibrary" class="btn-underline"
+      <nuxt-link to="/video-library" class="btn-underline"
         >View Video Library</nuxt-link
       >
     </div>
@@ -31,23 +23,10 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      activeModal: undefined,
-    };
-  },
-  methods: {
-    setActiveModal(payload) {
-      this.activeModal = payload;
-    },
-    unsetActiveModal() {
-      this.activeModal = undefined;
-    },
-  },
 };
 </script>
   
-<style lang="scss">
+<style lang="scss" scoped>
 .featured-videos-wrapper {
   margin-top: 55px;
   margin-bottom: 55px;

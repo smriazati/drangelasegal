@@ -53,9 +53,6 @@ export default {
     p {
       margin-bottom: 60px;
     }
-    .button a {
-      @include btnFill;
-    }
   }
 }
 </style>

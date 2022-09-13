@@ -8,15 +8,13 @@ const query = groq`*[_type in ["siteMetadata"]][0]{
   }
 }`;
 
-const dynamicRouteQuery = groq`*[_type == "weddings"]{'slug':slug.current}`;
+const dynamicRouteQuery = groq`*[_type == "posts"]{'slug':slug.current}`;
 
 export default async () => {
-  const data = await sanity.fetch(query)
-  return {
-    // Target: https://go.nuxtjs.dev/config-target
-    target: 'static',
+  const data = await sanity.fetch(query);
 
-    // Global page headers: https://go.nuxtjs.dev/config-head
+  return {
+    target: 'static',
     head: {
       titleTemplate: "%s | Dr. Angela Segal",
       title: 'Dr. Angela Segal',
@@ -26,12 +24,12 @@ export default async () => {
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: `${data?.siteMetadata?.siteDesc}` },
+        { hid: 'description', name: 'description', content: `${data?.siteDesc}` },
         { name: 'format-detection', content: 'telephone=no' },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: `${data?.siteMetadata?.ogImg?.url}?h=1200&w=640`
+          content: `${data?.ogImg?.url}?h=1200&w=640`
         },
         {
           hid: 'og:image:width',
@@ -43,7 +41,7 @@ export default async () => {
           property: 'og:image:height',
           content: `1200`
         },
-        { hid: 'og:image:alt', property: 'og:image:alt', content: `${data?.siteMetadata?.ogImg?.alt}` }
+        { hid: 'og:image:alt', property: 'og:image:alt', content: `${data?.ogImg?.alt}` }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: `/favicon.ico` },
@@ -57,20 +55,12 @@ export default async () => {
         },
       ]
     },
-
-    // Global CSS: https://go.nuxtjs.dev/config-css
     css: ['~/assets/sass/main.scss'],
-
-    // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
       "~/plugins/sanityImage.js", "~/plugins/sanity.js", "~/plugins/vimeo.js"
     ],
-
-    // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
-
-    // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-    buildModules: ['@nuxtjs/sanity/module', '@nuxtjs/google-fonts', '@nuxtjs/style-resources'],
+    buildModules: ['@nuxtjs/sanity/module', '@nuxtjs/style-resources'],
     styleResources: {
       scss: [
         '~/assets/sass/system/_colors.scss',
@@ -80,20 +70,6 @@ export default async () => {
       ],
       hoistUseStatements: true
     },
-    googleFonts: {
-      families: {
-        'Source Serif Pro': [300],
-        'Source Sans Pro': {
-          wght: [400, 700],
-          ital: [400]
-        },
-        'Source Code Pro': [400]
-      },
-      display: 'swap',
-      prefetch: true,
-      preconnect: true
-    },
-    // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
       ['nuxt-lazy-load', {
         directiveOnly: true
@@ -105,17 +81,16 @@ export default async () => {
       exclude: [
         /^\/new/ // path starts with /admin
       ],
-      // async routes() {
-      //   const weddings = (await sanity.fetch(dynamicRouteQuery)) || []
-      //   return weddings.map((wedding) => {
-      //     return {
-      //       route: `/weddings/${wedding.slug}/`,
-      //       payload: wedding,
-      //     }
-      //   })
-      // }
+      async routes() {
+        const posts = (await sanity.fetch(dynamicRouteQuery)) || []
+        return posts.map((post) => {
+          return {
+            route: `/post/${post.slug}/`,
+            payload: post,
+          }
+        })
+      }
     },
-    // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
       extractCSS: true,
       loaders: {

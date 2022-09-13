@@ -1,23 +1,38 @@
 <template>
   <div class="home-banner">
-    <figure>
-      <img src="/media/home/1.jpg" alt="" />
+    <figure v-if="data.img1.url">
+      <img
+        :src="$urlFor(data.img1.url).width(2000).auto('format')"
+        :alt="data.img1.alt"
+      />
     </figure>
-    <figure>
-      <img src="/media/home/2.jpg" alt="" />
+    <figure v-if="data.img2.url">
+      <img
+        :src="$urlFor(data.img2.url).width(2000).auto('format')"
+        :alt="data.img2.alt"
+      />
     </figure>
-    <figure>
-      <img src="/media/home/3.jpg" alt="" />
+    <figure v-if="data.img3.url">
+      <img
+        :src="$urlFor(data.img3.url).width(2000).auto('format')"
+        :alt="data.img3.alt"
+      />
     </figure>
   </div>
 </template>
-
+<script>
+export default {
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+  },
+};
+</script>
 <style lang="scss">
 .home-banner {
-  background: $sand;
-  height: calc(100vh - $headerHeight);
-  max-height: calc(100vh - $headerHeight);
-  overflow: hidden;
+  height: 100%;
   @include stackedDivs;
   figure {
     width: 100%;

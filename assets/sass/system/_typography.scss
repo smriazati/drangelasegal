@@ -1,12 +1,12 @@
 // typeface
 @mixin serifTypeface() {
-  font-family: 'Source Serif Pro', serif;
+  font-family: 'Source Serif', serif;
   font-style: normal;
   font-weight: 300;
 }
 
 @mixin sansSerifTypeface() {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 400;
 }
 
