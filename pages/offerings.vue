@@ -106,7 +106,7 @@ const query = groq`
         "url": offering_4.img.image.asset->url,
         "alt": offering_4.img.image.asset->altText
       },
-    "events": offering_4.events[]->{_id, name, when, where, button}
+    "events": *[_type=='events'][0...10]{_id, name, when, where, button}
   }
 }
   `;

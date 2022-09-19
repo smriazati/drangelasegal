@@ -2,6 +2,7 @@
   <span v-if="content">
     <figure v-if="content.mark">
       <img
+        data-not-lazy
         :src="$urlFor(content.mark.url).size(width * 2)"
         :alt="content.mark.alt"
         :width="width"
