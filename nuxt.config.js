@@ -48,10 +48,10 @@ export default async () => {
       ],
       script: [
         {
-          src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"
+          src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js", defer: true
         },
         {
-          src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"
+          src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js", defer: true
         },
       ]
     },
