@@ -28,11 +28,19 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: $collapse-bp) {
+    flex-direction: column;
+  }
   h3 {
     @include ctaStyle;
   }
   .button-wrapper {
-    padding-left: 24px;
+    @media (min-width: $collapse-bp) {
+      padding-left: 24px;
+    }
+    @media (max-width: $collapse-bp) {
+      padding-top: 24px;
+    }
     a {
       @include inputStyle;
       @include btnUnderline;

@@ -17,3 +17,30 @@ export default {
   components: { PostGridItem },
 };
 </script>
+
+<style lang="scss">
+.post-list {
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .post-list-item {
+    text-align: center;
+    margin-bottom: 60px;
+
+    @media (min-width: $collapse-bp) {
+      flex: 0 0 30%;
+    }
+
+    @media (max-width: $collapse-bp) {
+      flex: 0 0 45%;
+    }
+
+    h3 {
+      margin-top: 24px;
+      @include postPreviewTitle;
+    }
+  }
+}
+</style>

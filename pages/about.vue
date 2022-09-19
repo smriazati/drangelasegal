@@ -60,8 +60,14 @@ export default {
 .about-page {
   .layout-image-text {
     .text-wrapper-inner {
-      padding-top: 120px;
-      padding-bottom: 120px;
+      @media (min-width: $collapse-bp) {
+        padding-top: 120px;
+        padding-bottom: 120px;
+      }
+      @media (max-width: $collapse-bp) {
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
     }
     h2 {
       margin-bottom: 36px;

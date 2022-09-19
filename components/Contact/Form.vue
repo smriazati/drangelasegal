@@ -262,6 +262,12 @@ form {
   margin-top: 64px;
   .form-group {
     display: flex;
+    @media (max-width: 500px) {
+      flex-direction: column;
+      > *:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
     .flex-col {
       flex: 1;
       &:not(:last-child) {

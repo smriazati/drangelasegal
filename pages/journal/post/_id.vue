@@ -150,8 +150,13 @@ export default {
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: repeat(2, 1fr);
+    @media (max-width: $collapse-bp) {
+      margin-top: 32px;
+      grid-template-columns: 1fr;
+    }
     border-top: 1px solid #cacaca;
     border-bottom: 1px solid #cacaca;
+
     .image-wrapper {
       figure {
         display: flex;
@@ -164,7 +169,12 @@ export default {
     .text-wrapper {
       place-self: center;
       width: 100%;
-      padding: 124px 98px 124px 107px;
+      @media (min-width: $collapse-bp) {
+        padding: 124px 98px 124px 107px;
+      }
+      @media (max-width: $collapse-bp) {
+        padding: 30px;
+      }
     }
   }
 }

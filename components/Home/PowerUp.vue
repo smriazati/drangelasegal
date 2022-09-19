@@ -30,17 +30,35 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
   .text-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     max-width: 95%;
+    @media (max-width: $collapse-bp) {
+      flex-direction: column;
+    }
   }
 
+  h2 {
+    @media (max-width: $collapse-bp) {
+      text-align: right;
+      font-size: 86px;
+      line-height: 79px;
+      letter-spacing: 0.02em;
+      margin-bottom: 64px;
+      width: 100%;
+    }
+  }
   p {
-    flex: 0 0 476px;
     @media (min-width: $collapse-bp) {
+      flex: 0 0 476px;
       margin-left: 200px;
+    }
+    @media (max-width: $collapse-bp) {
+      max-width: 80%;
+      margin-right: auto;
     }
   }
 }

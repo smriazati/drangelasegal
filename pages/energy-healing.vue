@@ -127,10 +127,17 @@ export default {
   .layout-image-text {
     // grid-template-rows: 50vw;
     .text-wrapper {
-      padding: 44px 16px;
+      @media (min-width: $collapse-bp) {
+        padding: 44px 16px;
+      }
     }
     h2 {
-      margin-bottom: 44px;
+      @media (min-width: $collapse-bp) {
+        margin-bottom: 44px;
+      }
+      @media (max-width: $collapse-bp) {
+        margin-bottom: 24px;
+      }
     }
   }
 
@@ -140,7 +147,9 @@ export default {
       align-self: start;
     }
     > *:last-child {
-      padding-top: 70px;
+      @media (min-width: $collapse-bp) {
+        padding-top: 70px;
+      }
     }
   }
   .techniques {

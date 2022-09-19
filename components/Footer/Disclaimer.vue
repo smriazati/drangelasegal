@@ -4,7 +4,7 @@
       <p>{{ content.disclaimer }}</p>
     </div>
     <div class="copyright">
-      <div class="flex-row">
+      <div class="flex-row no-collapse">
         <p>2022 Angela Segal, PHD.</p>
         <p>
           <a href="https://otherlove.co" target="_blank">Made with Otherlove</a>
@@ -40,7 +40,12 @@ export default {
 
 <style lang="scss">
 .footer-disclaimer {
-  margin-top: 60px;
+  @media (min-width: $collapse-bp) {
+    margin-top: 60px;
+  }
+  @media (max-width: $collapse-bp) {
+    margin-top: 32px;
+  }
   .disclaimer {
     max-width: 1040px;
     margin: 0 auto;
@@ -67,6 +72,9 @@ export default {
   .footer-nav-secondary {
     display: flex;
     justify-content: center;
+    @media (max-width: $collapse-bp) {
+      justify-content: flex-start;
+    }
   }
   .footer-nav-secondary li:not(:last-child):after {
     content: "|";

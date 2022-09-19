@@ -40,8 +40,14 @@ export default {
 
 <style lang="scss">
 .callout-item {
-  width: 50vw;
-  height: 50vw;
+  @media (min-width: $collapse-bp) {
+    width: 50vw;
+    height: 50vw;
+  }
+  @media (max-width: $collapse-bp) {
+    width: 100vw;
+    height: 100vw;
+  }
   overflow: hidden;
   .callout-item-wrapper {
     width: 100%;

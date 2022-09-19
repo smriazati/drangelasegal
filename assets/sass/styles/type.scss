@@ -1,0 +1,82 @@
+/* typography */
+html {
+    font-size: 16px;
+    @include sansSerifTypeface;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figcaption,
+blockquote,
+a {
+    @include textStyle;
+}
+
+.display-heading-style,
+.display-style {
+    @include displayHeadingStyle();
+}
+
+.heading-style,
+.display-sm-style {
+    @include headingStyle();
+}
+
+.title-style {
+    @include titleStyle();
+}
+
+.title-style-lower {
+    @include titleStyle();
+    text-transform: none;
+}
+
+.large-text-style {
+    @include largeTextStyle;
+}
+
+.text-style {
+    @include textStyle();
+}
+
+.input-style {
+    @include inputStyle();
+}
+
+.quote-style {
+    @include quoteStyle();
+}
+
+.display-text-style {
+    @include displayTextStyle;
+}
+
+.post-preview-title-style {
+    @include postPreviewTitle;
+}
+
+.rte {
+    h2 {
+        @include titleStyle;
+        margin-bottom: 24px;
+    }
+
+    ul {
+        @include largeTextMonoStyle;
+    }
+
+    p+h2 {
+        margin-top: 24px;
+    }
+
+    p+p {
+        margin-top: 24px;
+    }
+}

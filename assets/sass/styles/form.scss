@@ -1,0 +1,45 @@
+// forms 
+
+button[disabled],
+input[disabled],
+button.disabled {
+    pointer-events: none
+}
+
+label {
+    @include labelStyle;
+}
+
+fieldset {
+    border: none;
+}
+
+input,
+textarea {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    border-radius: 0;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+input,
+textarea,
+input::placeholder {
+    @include inputStyle;
+}
+
+textarea {
+    resize: none;
+}
+
+input {
+    height: 24px;
+    width: auto;
+    border-bottom: 1px solid black;
+
+    &::placeholder {
+        color: #969696;
+    }
+}

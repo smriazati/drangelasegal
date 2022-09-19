@@ -1,0 +1,50 @@
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.link-underline {
+    @include linkUnderline;
+}
+
+p,
+ul,
+ol {
+    a:not(.link-inherit) {
+        color: inherit;
+        transition: .3s ease all;
+
+        &:hover {
+            color: $link-color;
+        }
+    }
+}
+
+nav ul a {
+    color: inherit;
+}
+
+ul.no-style {
+    list-style: none;
+}
+
+button {
+    @include resetBtn;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+.btn-underline {
+    @include btnUnderline;
+    @include inputStyle;
+}
+
+.btn-fill {
+    @include btnFill;
+}
+
+.link-hover:hover {
+    cursor: pointer;
+}

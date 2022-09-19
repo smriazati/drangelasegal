@@ -55,7 +55,7 @@
             <li @click="toggleNav()"><SiteFacebookLink /></li>
           </ul>
         </nav>
-        <div>
+        <div class="mark">
           <nuxt-link to="/" class="site-logo">
             <SiteMark :width="60" />
           </nuxt-link>
@@ -168,6 +168,8 @@ header.site-header {
       padding-top: 44px;
       padding-bottom: 22px;
     }
+    $collapse-area-height: 700px;
+
     .collapse-area {
       transition: 0.5s ease all;
       position: absolute;
@@ -183,9 +185,15 @@ header.site-header {
       text-align: center;
       &.hide {
         transform: translateY(-100vh);
+        @media (max-height: $collapse-area-height) {
+          transform: translateY($collapse-area-height * -1);
+        }
       }
       &.show {
         transform: translateY(0vh);
+        @media (max-height: $collapse-area-height) {
+          transform: translateY(0px);
+        }
       }
 
       nav ul {
@@ -194,6 +202,9 @@ header.site-header {
         justify-content: center;
       }
       .nav-primary {
+        @media (max-height: $collapse-area-height) {
+          margin-top: 48px;
+        }
         margin-bottom: 48px;
         li:not(:last-child) {
           margin-bottom: 24px;
@@ -218,6 +229,12 @@ header.site-header {
           line-height: 19px;
           letter-spacing: 0.12em;
           color: #000;
+        }
+      }
+
+      .mark {
+        @media (max-height: $collapse-area-height) {
+          padding-bottom: 48px;
         }
       }
     }
