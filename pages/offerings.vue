@@ -4,33 +4,33 @@
       <div
         v-if="data.offering1"
         :class="activeOffering === 1 ? 'show' : 'hide'"
-        :style="`background-image: url(${$urlFor(data.offering1.img.url)
-          .width(2000)
-          .auto('format')})`"
+        :lazy-background="
+          $urlFor(data.offering1.img.url).width(2000).auto('format')
+        "
         class="bg-full-width bg-fixed"
       ></div>
       <div
-        v-if="data.offering1"
+        v-if="data.offering2"
         :class="activeOffering === 2 ? 'show' : 'hide'"
-        :style="`background-image: url(${$urlFor(data.offering2.img.url)
-          .width(2000)
-          .auto('format')})`"
+        :lazy-background="
+          $urlFor(data.offering2.img.url).width(2000).auto('format')
+        "
         class="bg-full-width bg-fixed"
       ></div>
       <div
-        v-if="data.offering1"
+        v-if="data.offering3"
         :class="activeOffering === 3 ? 'show' : 'hide'"
-        :style="`background-image: url(${$urlFor(data.offering3.img.url)
-          .width(2000)
-          .auto('format')})`"
+        :lazy-background="
+          $urlFor(data.offering3.img.url).width(2000).auto('format')
+        "
         class="bg-full-width bg-fixed"
       ></div>
       <div
-        v-if="data.offering1"
+        v-if="data.offering4"
         :class="activeOffering === 4 ? 'show' : 'hide'"
-        :style="`background-image: url(${$urlFor(data.offering4.img.url)
-          .width(2000)
-          .auto('format')})`"
+        :lazy-background="
+          $urlFor(data.offering4.img.url).width(2000).auto('format')
+        "
         class="bg-full-width bg-fixed"
       ></div>
     </div>
@@ -172,10 +172,10 @@ export default {
     height: 100%;
     > div {
       transition: 2s ease opacity;
-      &.show {
+      &.show.lazyLoad.isLoaded {
         opacity: 1;
       }
-      &.hide {
+      &.hide.lazyLoad.isLoaded {
         opacity: 0;
       }
     }

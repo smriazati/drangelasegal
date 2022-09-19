@@ -1,8 +1,8 @@
 <template>
   <div class="callout-item">
     <div
-      :style="`background-image: url(${data.img.url})`"
-      class="callout-item-wrapper bg-full-width"
+      :style="`background-image: url(${$urlFor(data.img.url).auto('format')})`"
+      class="callout-item-wrapper bg-full-width not-lazy"
     >
       <div
         v-if="data.button.type === 'internal' && data.button.destination"

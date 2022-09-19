@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="`background-image: url(${data.img.url})`"
+    :lazy-background="$urlFor(data.img.url).auto('format')"
     class="testimonial bg-full-width"
   >
     <figure v-if="data.quote && data.name">

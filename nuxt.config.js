@@ -72,7 +72,7 @@ export default async () => {
     },
     modules: [
       ['nuxt-lazy-load', {
-        directiveOnly: true
+        // directiveOnly: true
       }]
     ],
     generate: {

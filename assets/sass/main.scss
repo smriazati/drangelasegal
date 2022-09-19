@@ -508,3 +508,17 @@ main.site-main>div,
     }
   }
 }
+
+// lazy load
+
+.bg-full-width,
+.lazyLoad {
+  &:not(.not-lazy) {
+    opacity: 0;
+    transition: 1s ease all;
+
+    &.isLoaded {
+      opacity: 1;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="`background-image: url(${$urlFor(imgUrl)})`"
+    :lazy-background="$urlFor(imgUrl).auto('format')"
     class="banner-wrapper bg-full-width bg-fixed"
   ></div>
 </template>
