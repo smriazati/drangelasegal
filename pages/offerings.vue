@@ -150,12 +150,18 @@ export default {
     },
     scrollTop() {
       const element = this.$refs.top;
-      console.log("hi,", element);
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
+      const scrollYPos = window.scrollY;
+      let headerHeight = 216;
+      if (window.innerWidth < 960) {
+        headerHeight = 108;
+      }
+      if (scrollYPos > headerHeight) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
     },
   },
 };
@@ -184,7 +190,14 @@ export default {
 .offerings-page-wrapper {
   padding: 65px 16px;
   display: grid;
-  grid-template-columns: 1fr minmax(720px, 1fr) 1fr;
+  width: 100%;
+  @media (min-width: $collapse-bp) {
+    grid-template-columns: 1fr minmax(720px, 1fr) 1fr;
+  }
+  @media (max-width: $collapse-bp) {
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+    grid-gap: 16px;
+  }
   grid-template-rows: 1fr auto 1fr;
   overflow: hidden;
   button {
@@ -216,6 +229,10 @@ export default {
     span {
       @include inputStyle;
       color: $white;
+
+      @media (max-width: $collapse-bp) {
+        display: none;
+      }
     }
     &:before {
       content: "";
@@ -226,6 +243,9 @@ export default {
     $animationDistance: 1rem;
     &:nth-child(1) {
       align-items: center;
+      @media (max-width: $collapse-bp) {
+        justify-content: flex-end;
+      }
       span {
         margin-left: 12px;
       }
@@ -254,6 +274,9 @@ export default {
     &:nth-child(3) {
       flex-direction: row-reverse;
       align-items: center;
+      @media (max-width: $collapse-bp) {
+        justify-content: flex-end;
+      }
       span {
         margin-right: 12px;
       }
@@ -286,7 +309,10 @@ export default {
     display: flex;
     transition: 1s ease transform;
     justify-content: center;
-    margin: 52px;
+    @media (min-width: $collapse-bp) {
+      margin: 52px;
+    }
+
     &.show {
       transform: translateX(0) translateY(0);
       height: auto;
@@ -317,6 +343,5 @@ export default {
       transform: translateX(0) translateY(calc(100vh + $headerHeight));
     }
   }
-  // 1 workshops, 2 individuals, 3 corporate, 4 events
 }
 </style>

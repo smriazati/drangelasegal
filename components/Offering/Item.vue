@@ -53,10 +53,17 @@ export default {
   align-items: center;
   .offering-content {
     @include glowBox;
-    max-width: 684px;
+    @media (min-width: 684px) {
+      max-width: 684px;
+    }
     margin-left: auto;
     margin-right: auto;
 
+    h2 {
+      @media (max-width: 400px) {
+        font-size: 24px;
+      }
+    }
     .events-wrapper {
       margin-top: 60px;
       .event-list {

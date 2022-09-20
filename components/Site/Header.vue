@@ -75,7 +75,7 @@ export default {
     this.content = await this.$sanity.fetch(query);
   },
   fetchOnServer: false,
-  mounted: function () {
+  beforeMount: function () {
     this.$nextTick(function () {
       this.onResize();
     });
@@ -238,6 +238,12 @@ header.site-header {
         }
       }
     }
+  }
+}
+
+@media (max-width: $collapse-bp) {
+  header.site-header .desktop-nav {
+    display: none;
   }
 }
 </style>
