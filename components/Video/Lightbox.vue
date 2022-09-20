@@ -90,7 +90,7 @@ export default {
   left: 0;
   width: 100%;
   min-height: 100vh;
-  z-index: 11;
+  z-index: 511;
   .close-overlay {
     position: fixed;
     height: 100%;

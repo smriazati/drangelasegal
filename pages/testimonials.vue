@@ -53,8 +53,10 @@ export default {
   text-align: center;
   > * {
     padding: 0 30px;
+    margin-bottom: 24px;
+
     @media (max-width: $collapse-bp) {
-      flex: 0 0 50%;
+      flex: 0 0 100%;
     }
     @media (min-width: $collapse-bp) and (max-width: $lg-bp) {
       flex: 0 0 33%;
