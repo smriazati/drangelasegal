@@ -62,6 +62,7 @@ export default {
     h2 {
       @media (max-width: 400px) {
         font-size: 24px;
+        line-height: 36px;
       }
     }
     .events-wrapper {

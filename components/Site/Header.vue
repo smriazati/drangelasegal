@@ -56,7 +56,7 @@
           </ul>
         </nav>
         <div class="mark">
-          <nuxt-link to="/" class="site-logo" @click="toggleNav()">
+          <nuxt-link to="/" class="site-logo" @click.native="toggleNav()">
             <SiteMark :width="60" />
           </nuxt-link>
         </div>

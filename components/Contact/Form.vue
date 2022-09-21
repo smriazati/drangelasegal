@@ -59,7 +59,7 @@
         <input type="text" name="companyName" placeholder="Your company name" />
       </div>
       <div class="flex-col">
-        <label for="companySite">Company Website (if applicable)r</label>
+        <label for="companySite">Company Website (if applicable)</label>
         <input type="text" name="companySite" placeholder="Website URL" />
       </div>
     </div>

@@ -1,13 +1,13 @@
 <template>
   <div class="home-banner">
     <figure v-if="data.img1.url">
-      <img :alt="data.img1.alt" />
+      <img :src="$urlFor(data.img1.url).auto('format')" :alt="data.img1.alt" />
     </figure>
     <figure v-if="data.img2.url">
-      <img :alt="data.img2.alt" />
+      <img :src="$urlFor(data.img2.url).auto('format')" :alt="data.img2.alt" />
     </figure>
     <figure v-if="data.img3.url">
-      <img :alt="data.img3.alt" />
+      <img :src="$urlFor(data.img3.url).auto('format')" :alt="data.img3.alt" />
     </figure>
   </div>
 </template>

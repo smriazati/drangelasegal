@@ -40,6 +40,9 @@ export default {
 <style lang="scss">
 .testimonials-page .card-list {
   margin-top: 150px;
+  @media (max-width: $collapse-bp) {
+    margin-top: 60px;
+  }
 }
 
 .testimonials-page figure {
@@ -53,7 +56,7 @@ export default {
   text-align: center;
   > * {
     padding: 0 30px;
-    margin-bottom: 24px;
+    margin-bottom: 48px;
 
     @media (max-width: $collapse-bp) {
       flex: 0 0 100%;
