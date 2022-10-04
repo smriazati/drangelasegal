@@ -148,7 +148,12 @@ export default {
   .post-content {
     margin-top: 93px;
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: 100vh;
+    @media (max-height: 400px) {
+      grid-template-rows: 500px;
+    }
+    overflow: hidden;
+
     grid-template-columns: repeat(2, 1fr);
     @media (max-width: $collapse-bp) {
       margin-top: 32px;
@@ -167,6 +172,8 @@ export default {
       }
     }
     .text-wrapper {
+      overflow-y: scroll;
+      height: 100%;
       place-self: center;
       width: 100%;
       @media (min-width: $collapse-bp) {
