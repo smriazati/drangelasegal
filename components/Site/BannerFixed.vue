@@ -21,6 +21,6 @@ export default {
   height: 512px;
   width: 100%;
   overflow: hidden;
-  background-attachment: fixed;
+  @include fixedBgAttachment;
 }
 </style>

@@ -28,7 +28,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-attachment: fixed;
+  @include fixedBgAttachment;
+
   figure {
     max-width: 844px;
     margin-left: auto;

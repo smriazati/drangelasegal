@@ -65,3 +65,11 @@ $headerHeight: 214px;
   box-shadow: 0px 0px 30px 10px #FDF9DF;
   animation: 2s linear infinite alternate pulseGlow;
 }
+
+@mixin fixedBgAttachment {
+  background-attachment: fixed;
+
+  @media (max-width: $collapse-bp) {
+    background-attachment: unset;
+  }
+}

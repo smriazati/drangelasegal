@@ -89,7 +89,8 @@ nav ul {
 }
 
 .bg-fixed {
-    background-attachment: fixed;
+    @include fixedBgAttachment;
+
 }
 
 .glow-box {
