@@ -156,6 +156,7 @@ export default {
 
     grid-template-columns: repeat(2, 1fr);
     @media (max-width: $collapse-bp) {
+      grid-template-rows: auto;
       margin-top: 32px;
       grid-template-columns: 1fr;
     }
@@ -172,8 +173,10 @@ export default {
       }
     }
     .text-wrapper {
-      overflow-y: scroll;
-      height: 100%;
+      @media (min-width: $collapse-bp) {
+        overflow-y: scroll;
+        height: 100%;
+      }
       place-self: center;
       width: 100%;
       @media (min-width: $collapse-bp) {
