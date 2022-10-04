@@ -30,6 +30,7 @@ export default {
   align-items: center;
   @media (max-width: $collapse-bp) {
     flex-direction: column;
+    align-items: flex-start;
   }
   h3 {
     @include ctaStyle;

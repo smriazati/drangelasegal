@@ -52,11 +52,28 @@ export default {
   .callout-item-wrapper {
     width: 100%;
     height: 100%;
-
+    position: relative;
     text-align: center;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: $grey-brown;
+      mix-blend-mode: multiply;
+      opacity: 0;
+      transition: 0.5s ease all;
+    }
+    &:hover:before {
+      opacity: 0.5;
+    }
     .callout-item-link {
       width: 100%;
       height: 100%;
+      position: relative;
       > a {
         display: block;
         width: 100%;

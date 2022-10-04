@@ -161,7 +161,7 @@
   @include serifTypeface();
   font-size: 32px;
   font-weight: 300;
-  line-height: 45px;
+  line-height: 40px;
   letter-spacing: 0em;
 }
 
@@ -172,4 +172,13 @@
   line-height: 32px;
   letter-spacing: 0.02em;
   text-align: left;
+}
+
+@mixin subheadingStyle() {
+  @include serifTypeface();
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 35px;
+  text-transform: none;
+  letter-spacing: 0rem;
 }

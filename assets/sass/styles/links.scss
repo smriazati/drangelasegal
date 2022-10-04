@@ -32,6 +32,11 @@ button {
     @include resetBtn;
 }
 
+button,
+button span {
+    color: $black;
+}
+
 input[type="submit"]:hover {
     cursor: pointer;
 }

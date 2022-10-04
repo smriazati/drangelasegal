@@ -176,6 +176,17 @@ export default {
         padding: 30px;
       }
     }
+
+    h2 {
+      @include subheadingStyle;
+    }
+    ul {
+      padding-left: 14px;
+      @include textStyle;
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
   }
 }
 </style>

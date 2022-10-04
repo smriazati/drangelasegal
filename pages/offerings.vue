@@ -229,7 +229,8 @@ export default {
     span {
       @include inputStyle;
       color: $white;
-
+      color: $sunlight;
+      text-shadow: 0px 0px 8px $sunlight;
       @media (max-width: $collapse-bp) {
         display: none;
       }

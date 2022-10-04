@@ -43,6 +43,10 @@ export default {
   margin-top: 200px;
 }
 .courses-info-wrapper {
+  @media (min-width: $collapse-bp) {
+    min-height: 100vh;
+    height: 100vh;
+  }
   .text-wrapper {
     h2 {
       margin-bottom: 4px;
