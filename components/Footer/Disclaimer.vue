@@ -5,7 +5,8 @@
     </div>
     <div class="copyright">
       <div class="flex-row no-collapse">
-        <p>2022 Angela Segal, PHD.</p>
+        <p>{{ thisYear }} Angela Segal, PHD.</p>
+        <p> | </p>
         <p>
           <a href="https://otherlove.co" target="_blank">Made with Otherlove</a>
         </p>
@@ -34,6 +35,13 @@ export default {
   data: () => ({
     content: null,
   }),
+  computed: {
+    thisYear() {
+      const date = new Date();
+      const year = date.getFullYear()
+      return year;
+    }
+  }
 };
 </script>
     

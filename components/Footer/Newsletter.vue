@@ -1,6 +1,7 @@
 <template>
   <div class="newsletter-form">
     <h2>Unlock your highest self</h2>
+    <p>Join the email list below for updates, insights, and resources. Unsubscribe at any time.</p>
     <!-- <form>
       <div class="flex-row no-collapse">
         <input type="text" placeholder="Your email address" id="email" />
@@ -103,6 +104,10 @@ export default {};
       text-align: left;
       max-width: 50%;
     }
+  }
+  p {
+    @include footerText;
+    margin-top: 12px;
   }
   form {
     @media (min-width: $collapse-bp) {

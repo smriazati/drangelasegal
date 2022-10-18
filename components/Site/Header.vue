@@ -97,7 +97,7 @@ export default {
       this.isMobileNavExpanded = !this.isMobileNavExpanded;
     },
     setCurrentNav() {
-      if (window.innerWidth > 800) {
+      if (window.innerWidth > 980) {
         this.isDesktop = true;
       } else {
         this.isDesktop = false;

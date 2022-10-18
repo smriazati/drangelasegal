@@ -78,6 +78,7 @@ const query = groq`
   "offering1": {
     "title": offering_1.title,
     "desc": offering_1.desc,
+    "link": offering_1.link,
     "img": {
         "url": offering_1.img.image.asset->url,
         "alt": offering_1.img.image.asset->altText
@@ -86,6 +87,7 @@ const query = groq`
   "offering2": {
     "title": offering_2.title,
     "desc": offering_2.desc,
+    "link": offering_2.link,
     "img": {
         "url": offering_2.img.image.asset->url,
         "alt": offering_2.img.image.asset->altText
@@ -94,6 +96,7 @@ const query = groq`
   "offering3": {
     "title": offering_3.title,
     "desc": offering_3.desc,
+    "link": offering_3.link,
     "img": {
         "url": offering_3.img.image.asset->url,
         "alt": offering_3.img.image.asset->altText
@@ -102,6 +105,7 @@ const query = groq`
   "offering4": {
     "title": offering_4.title,
     "desc": offering_4.desc,
+    "link": offering_4.link,
     "img": {
         "url": offering_4.img.image.asset->url,
         "alt": offering_4.img.image.asset->altText
@@ -176,6 +180,17 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $grey-brown;
+      mix-blend-mode: multiply;
+      opacity: 0.5;
+    }
     > div {
       transition: 2s ease opacity;
       &.show.lazyLoad.isLoaded {

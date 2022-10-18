@@ -12,7 +12,7 @@
         </div>
         <div class="text-wrapper">
           <div class="text-wrapper-inner">
-            <h2 class="heading-style">Meet Angela Segal, PHD</h2>
+            <h2 class="heading-style">Meet Angela Segal, PhD</h2>
             <div v-if="data.about.text" class="rte">
               <SanityContent :blocks="data.about.text.rte" />
             </div>

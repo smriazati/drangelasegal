@@ -9,6 +9,9 @@
             {{ data.desc }}
           </p>
         </div>
+        <div v-if="data.link" class="link-wrapper text-center">
+          <SystemLinkObject :data="data.link" />
+        </div>
         <div v-if="data.events" class="events-wrapper text-center">
           <h3 class="title-style">Upcoming Events</h3>
           <div class="event-list">
@@ -63,6 +66,13 @@ export default {
       @media (max-width: 400px) {
         font-size: 24px;
         line-height: 36px;
+      }
+    }
+    .link-wrapper {
+      margin-top: 24px;
+      a {
+        @include linkUnderline;
+        @include inputStyle;
       }
     }
     .events-wrapper {

@@ -2,10 +2,7 @@
   <div class="page-title">
     <h1>Contact</h1>
     <h2>Get in Touch</h2>
-    <p>
-      To connect about energy healing, please fill out the form below or
-      directly email <EmailAddressLink />.
-    </p>
+    <p>To connect about energy healing, please fill out the form below.</p>
   </div>
 </template>
 
