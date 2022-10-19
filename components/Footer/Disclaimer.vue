@@ -5,7 +5,7 @@
     </div>
     <div class="copyright">
       <div class="flex-row no-collapse">
-        <p>{{ thisYear }} Angela Segal, PHD.</p>
+        <p>{{ thisYear }} &copy; Angela Segal, PhD.</p>
         <p> | </p>
         <p>
           <a href="https://otherlove.co" target="_blank">Made with Otherlove</a>
