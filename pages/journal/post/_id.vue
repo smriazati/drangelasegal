@@ -138,6 +138,7 @@ export default {
     flex-direction: column-reverse;
     h1 {
       @include headingStyle;
+      text-transform: none;
     }
     h2 {
       @include titleStyle;
@@ -188,7 +189,16 @@ export default {
     }
 
     h2 {
-      @include subheadingStyle;
+      @include headingStyle;
+      text-transform: none;
+      //styleName: Subheading;
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 35px;
+      letter-spacing: 0em;
+      strong {
+        font-weight: 300;
+      }
     }
     ul {
       padding-left: 14px;
