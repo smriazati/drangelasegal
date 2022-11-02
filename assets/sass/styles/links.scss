@@ -50,6 +50,12 @@ input[type="submit"]:hover {
     @include btnFill;
 }
 
+.btn-fill-div a {
+    display: flex;
+    justify-content: center;
+    @include btnFill;
+}
+
 .link-hover:hover {
     cursor: pointer;
 }

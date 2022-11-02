@@ -39,6 +39,18 @@ $btnTransition: .25s ease-in all;
   background: $golden;
   padding: 22px 36px;
 
+  // span,
+  // a {
+  //   display: flex;
+  //   justify-content: center;
+  // }
+
+  // a span {
+  //   padding: 0;
+  // }
+
+  // padding: 22px 36px;
+
   &[disabled] {
     opacity: .4;
   }

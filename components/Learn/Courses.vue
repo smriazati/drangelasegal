@@ -15,7 +15,7 @@
           <h3 v-if="data.subhead" class="heading-style">{{ data.subhead }}</h3>
           <p v-if="data.text">{{ data.text }}</p>
           <div class="button" v-if="data.button">
-            <SystemLinkObject :data="data.button" class="btn-fill" />
+            <SystemLinkObject :data="data.button" class="btn-fill-div"/>
           </div>
         </div>
       </div>
