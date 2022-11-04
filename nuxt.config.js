@@ -60,7 +60,10 @@ export default async () => {
       "~/plugins/sanityImage.js", "~/plugins/sanity.js", "~/plugins/vimeo.js"
     ],
     components: true,
-    buildModules: ['@nuxtjs/sanity/module', '@nuxtjs/style-resources'],
+    buildModules: [
+      '@nuxtjs/sanity/module',
+      '@nuxtjs/style-resources'
+    ],
     styleResources: {
       scss: [
         '~/assets/sass/system/_colors.scss',
@@ -69,6 +72,9 @@ export default async () => {
         '~/assets/sass/system/_buttons.scss'
       ],
       hoistUseStatements: true
+    },
+    image: {
+      projectId: '0jo9hjnc',
     },
     modules: [
       ['nuxt-lazy-load', {
