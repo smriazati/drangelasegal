@@ -5,23 +5,25 @@
     </div>
     <div class="button-wrapper">
       <ul class="ul-plain flex-row">
-        <li><InstagramLink /></li>
-        <li><FacebookLink /></li>
-        <li><EmailAddressLink text="Email" /></li>
+        <li>
+          <InstagramLink />
+        </li>
+        <li>
+          <EmailAddressLink text="Email" />
+        </li>
       </ul>
     </div>
   </div>
 </template>
-    <script>
+<script>
 import EmailAddressLink from "../Site/EmailAddressLink.vue";
 import InstagramLink from "../Site/InstagramLink.vue";
-import FacebookLink from "../Site/FacebookLink.vue";
 export default {
-  components: { EmailAddressLink, InstagramLink, FacebookLink },
+  components: { EmailAddressLink, InstagramLink },
 };
 </script>
   
-  <style lang="scss">
+<style lang="scss">
 .contact-cta-banner-wrapper {
   margin-top: 120px;
   background: $taupe;
@@ -29,18 +31,23 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   h3 {
     @include ctaStyle;
   }
+
   .button-wrapper {
     padding-left: 24px;
+
     a {
       @include inputStyle;
       @include btnUnderline;
+
       &:hover {
         color: inherit;
       }
     }
+
     li:not(:last-child) {
       margin-right: 52px;
     }
