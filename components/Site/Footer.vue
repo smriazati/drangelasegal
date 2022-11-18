@@ -3,7 +3,7 @@
     <nuxt-link to="/" class="mark">
       <SiteMark :width="70" />
     </nuxt-link>
-    <FooterNewsletter />
+    <SystemNewsletter :data="formData" />
     <FooterNav v-if="isDesktop" />
     <FooterDisclaimer />
     <div class="button-wrapper">
@@ -25,6 +25,12 @@ export default {
   },
   data: () => ({
     isDesktop: true,
+    formData: {
+      headline: 'Unlock your highest self',
+      text: 'Join the email list below for updates, insights, and resources. Unsubscribe at any time',
+      useCustomForm: false,
+      embedCode: undefined
+    }
   }),
   methods: {
     onResize() {
@@ -49,8 +55,9 @@ footer.site-footer {
   padding-top: 68px;
   padding-bottom: 30px;
   position: relative;
+
   @media (min-width: $collapse-bp) {
-    > .button-wrapper {
+    >.button-wrapper {
       position: absolute;
       bottom: 30px;
       right: 30px;
@@ -59,19 +66,23 @@ footer.site-footer {
 
   @media (max-width: $collapse-bp) {
     text-align: left;
-    > * {
+
+    >* {
       width: 80%;
       max-width: 80%;
       margin-left: auto;
       margin-right: auto;
     }
+
     a.mark {
       display: block;
       text-align: left;
     }
+
     .button-wrapper {
       display: block;
       margin-top: 26px;
+
       button {
         font-size: 9px;
         font-weight: 400;

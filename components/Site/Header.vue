@@ -22,7 +22,8 @@
         </nuxt-link>
       </div>
       <div class="collapse-area" :class="isMobileNavExpanded ? 'show' : 'hide'">
-        <nav class="nav-primary">
+        <SiteMobileNav @on-link-click="toggleNav()" />
+        <!-- <nav class="nav-primary">
           <ul>
             <li @click="toggleNav()">
               <nuxt-link to="/offerings">Offerings</nuxt-link>
@@ -54,7 +55,7 @@
             <li @click="toggleNav()"><SiteInstagramLink /></li>
             <li @click="toggleNav()"><SiteFacebookLink /></li>
           </ul>
-        </nav>
+        </nav> -->
         <div class="mark">
           <nuxt-link to="/" class="site-logo" @click.native="toggleNav()">
             <SiteMark :width="60" />
@@ -115,34 +116,42 @@ header.site-header {
     display: flex;
     flex-direction: column;
     padding: 24px;
-    > .nav-primary {
+
+    >.nav-primary {
       order: 3;
+
       ul {
         @include navPrimaryStyle;
         display: flex;
         justify-content: center;
-        > *:not(:last-child) {
+
+        >*:not(:last-child) {
           margin-right: 60px;
         }
       }
     }
-    > .nav-secondary {
+
+    >.nav-secondary {
       order: 1;
       margin-bottom: 20px;
+
       ul {
         @include navSecondaryStyle;
         display: flex;
         justify-content: flex-start;
-        > *:not(:last-child) {
+
+        >*:not(:last-child) {
           margin-right: 48px;
         }
-        > *:last-child {
+
+        >*:last-child {
           flex: 2;
           text-align: right;
         }
       }
     }
-    > .site-logo {
+
+    >.site-logo {
       order: 2;
       display: flex;
       justify-content: center;
@@ -151,16 +160,18 @@ header.site-header {
   }
 
   .mobile-nav {
-    > button {
+    >button {
       position: absolute;
       top: 8px;
       width: 100%;
       text-align: center;
       z-index: 201;
+
       span {
         @include navSecondaryStyle;
       }
     }
+
     .mobile-nav-wrapper {
       display: flex;
       justify-content: center;
@@ -168,6 +179,7 @@ header.site-header {
       padding-top: 44px;
       padding-bottom: 22px;
     }
+
     $collapse-area-height: 700px;
 
     .collapse-area {
@@ -183,14 +195,18 @@ header.site-header {
       flex-direction: column;
       justify-content: center;
       text-align: center;
+
       &.hide {
         transform: translateY(-100vh);
+
         @media (max-height: $collapse-area-height) {
           transform: translateY($collapse-area-height * -1);
         }
       }
+
       &.show {
         transform: translateY(0vh);
+
         @media (max-height: $collapse-area-height) {
           transform: translateY(0px);
         }
@@ -201,14 +217,18 @@ header.site-header {
         flex-direction: column;
         justify-content: center;
       }
+
       .nav-primary {
         @media (max-height: $collapse-area-height) {
           margin-top: 48px;
         }
+
         margin-bottom: 48px;
+
         li:not(:last-child) {
           margin-bottom: 24px;
         }
+
         a {
           @include serifTypeface;
           font-size: 30px;
@@ -218,11 +238,14 @@ header.site-header {
           color: #000;
         }
       }
+
       .nav-secondary {
         margin-bottom: 80px;
+
         li:not(:last-child) {
           margin-bottom: 12px;
         }
+
         a {
           font-size: 13px;
           font-weight: 400;

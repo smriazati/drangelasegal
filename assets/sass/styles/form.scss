@@ -43,3 +43,59 @@ input {
         color: #969696;
     }
 }
+
+/* aweber form */
+.newsletter-form {
+    margin-top: 36px;
+
+    h2 {
+        @include newsletterTitle();
+        margin-top: 22px;
+
+        @media (max-width: $collapse-bp) {
+            text-align: left;
+            max-width: 50%;
+        }
+    }
+
+    h2+p {
+        @include footerText;
+        margin-top: 12px;
+    }
+
+}
+
+.af-form-wrapper {
+    @media (min-width: $collapse-bp) {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    margin: 24px auto 0 auto;
+
+    .af-body {
+        display: flex;
+    }
+
+    .af-element:not(:last-child) {
+        flex: 2;
+    }
+
+    input {
+        flex: 2;
+    }
+
+    .previewLabel {
+        display: none;
+    }
+
+    af-element.buttonContainer,
+    .af-textWrap {
+        display: flex;
+    }
+
+    input[type="submit"] {
+        flex: 0;
+        text-align: right;
+    }
+}
