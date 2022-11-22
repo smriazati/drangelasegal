@@ -6,7 +6,7 @@
     </div>
   </div>
 </template>
-  <script>
+<script>
 export default {
   props: {
     data: {
@@ -22,33 +22,32 @@ export default {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 .power-up {
-  min-height: 100vh;
-  background: linear-gradient(
-    194.53deg,
-    rgba(243, 238, 231, 0.8) -4.22%,
-    rgba(253, 249, 223, 0.8) 11%,
-    rgba(218, 196, 162, 0.8) 57.17%,
-    rgba(172, 139, 85, 0.8) 96.52%
-  );
+  min-height: 80vh;
+  background: linear-gradient(194.53deg,
+      rgba(243, 238, 231, 0.8) -4.22%,
+      rgba(253, 249, 223, 0.8) 11%,
+      rgba(218, 196, 162, 0.8) 57.17%,
+      rgba(172, 139, 85, 0.8) 96.52%);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
+
   &:before {
     content: "";
-    background: linear-gradient(
-      194.53deg,
-      rgba(243, 238, 231, 0.8) -4.22%,
-      rgba(253, 249, 223, 0.8) 11%,
-      rgba(218, 196, 162, 0.8) 57.17%,
-      rgba(172, 139, 85, 0.8) 96.52%
-    );
+    background: linear-gradient(194.53deg,
+        rgba(243, 238, 231, 0.8) -4.22%,
+        rgba(253, 249, 223, 0.8) 11%,
+        rgba(218, 196, 162, 0.8) 57.17%,
+        rgba(172, 139, 85, 0.8) 96.52%);
     animation: 10s linear infinite RotateBg;
     position: absolute;
     top: -50vw;
@@ -70,6 +69,7 @@ export default {
     align-items: center;
     justify-content: center;
     max-width: 95%;
+
     @media (max-width: $collapse-bp) {
       flex-direction: column;
     }
@@ -85,11 +85,13 @@ export default {
       width: 100%;
     }
   }
+
   p {
     @media (min-width: $collapse-bp) {
       flex: 0 0 476px;
       margin-left: 200px;
     }
+
     @media (max-width: $collapse-bp) {
       max-width: 80%;
       margin-right: auto;
