@@ -35,8 +35,8 @@
 @mixin titleStyle() {
   @include sansSerifTypeface();
   font-weight: 400;
-  font-size: 22px;
-  line-height: 30px;
+  font-size: 15px;
+  line-height: 20px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
