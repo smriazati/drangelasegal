@@ -111,11 +111,16 @@
     </div>
 
     <div class="form-group text-center" @click="onSubmitClick">
-      <div data-netlify-recaptcha="true"></div>
+      <div class="flex-col">
+        <div class="flex-row align-center mb-24">
+          <div data-netlify-recaptcha="true"></div>
+        </div>
 
-      <button :disabled="!isFormValid" class="btn-fill" type="submit">
-        <span>Submit</span>
-      </button>
+        <button :disabled="!isFormValid" class="btn-fill" type="submit">
+          <span>Submit</span>
+        </button>
+      </div>
+
     </div>
     <div v-if="hasError" class="form-group error-group flex-col text-wrapper text-center">
       <div v-if="!isNameValid">
