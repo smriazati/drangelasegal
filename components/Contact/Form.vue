@@ -1,37 +1,22 @@
 <template>
-  <form
-    name="contact"
-    method="POST"
-    data-netlify="true"
-    :action="successRoute"
-    enctype="application/x-www-form-urlencoded"
-    :class="hasError ? 'has-error' : 'no-error'"
-  >
+  <form name="contact" method="POST" data-netlify="true" :action="successRoute"
+    enctype="application/x-www-form-urlencoded" netlify-honeypot="bot-field" data-netlify-recaptcha="true"
+    :class="hasError ? 'has-error' : 'no-error'">
     <input type="hidden" name="form-name" value="contact" />
 
     <div class="form-group">
       <div class="flex-col">
         <label for="name">Name *</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Your chosen name"
-          v-model="nameInput"
-          :class="isNameValid ? 'is-valid' : 'is-not-valid'"
-        />
+        <input type="text" name="name" placeholder="Your chosen name" v-model="nameInput"
+          :class="isNameValid ? 'is-valid' : 'is-not-valid'" />
         <div v-if="!isNameValid">
           <p class="error">Please include your name.</p>
         </div>
       </div>
       <div class="flex-col">
         <label for="email">Email Address *</label>
-        <input
-          type="text"
-          name="email"
-          placeholder="Your Email"
-          :class="isEmailValid ? 'is-valid' : 'is-not-valid'"
-          v-model="emailInput"
-        />
+        <input type="text" name="email" placeholder="Your Email" :class="isEmailValid ? 'is-valid' : 'is-not-valid'"
+          v-model="emailInput" />
         <div v-if="!isEmailValid">
           <p class="error">Please include your email.</p>
         </div>
@@ -39,17 +24,17 @@
     </div>
 
     <div class="form-group">
+      <div class="visually-hidden">
+        <label>Don’t fill this out if you’re human:</label>
+        <input name="bot-field" />
+      </div>
       <div class="flex-col">
         <label for="pronouns">Pronouns</label>
         <input type="text" name="pronouns" placeholder="Your pronouns" />
       </div>
       <div class="flex-col">
         <label for="phone">Phone Number</label>
-        <input
-          type="text"
-          name="phone"
-          placeholder="Best number to reach you"
-        />
+        <input type="text" name="phone" placeholder="Best number to reach you" />
       </div>
     </div>
 
@@ -68,33 +53,27 @@
       <div class="flex-col">
         <h3>Inquiry Reason</h3>
         <div class="options">
-          <label class="container"
-            >Current Client
+          <label class="container">Current Client
             <input type="checkbox" value="current" />
             <span class="checkmark"></span>
           </label>
-          <label class="container"
-            >Potential Client
+          <label class="container">Potential Client
             <input type="checkbox" value="potential" />
             <span class="checkmark"></span>
           </label>
-          <label class="container"
-            >Speaking Opportunity
+          <label class="container">Speaking Opportunity
             <input type="checkbox" value="speaking" />
             <span class="checkmark"></span>
           </label>
-          <label class="container"
-            >Retreat or Workshop
+          <label class="container">Retreat or Workshop
             <input type="checkbox" value="retreat" />
             <span class="checkmark"></span>
           </label>
-          <label class="container"
-            >Corporate Healing
+          <label class="container">Corporate Healing
             <input type="checkbox" value="corporate" />
             <span class="checkmark"></span>
           </label>
-          <label class="container"
-            >Media
+          <label class="container">Media
             <input type="checkbox" value="media" />
             <span class="checkmark"></span>
           </label>
@@ -106,18 +85,15 @@
       <div class="flex-col">
         <h3>Experience with Energy Healing:</h3>
 
-        <label class="container"
-          >None
+        <label class="container">None
           <input type="radio" checked="checked" name="radio" value="none" />
           <span class="checkmark"></span>
         </label>
-        <label class="container"
-          >Some
+        <label class="container">Some
           <input type="radio" name="radio" value="some" />
           <span class="checkmark"></span>
         </label>
-        <label class="container"
-          >Extensive
+        <label class="container">Extensive
           <input type="radio" name="radio" value="extensive" />
           <span class="checkmark"></span>
         </label>
@@ -126,12 +102,8 @@
     <div class="form-group">
       <div class="flex-col">
         <label for="message">Message *</label>
-        <textarea
-          name="message"
-          id="message"
-          v-model="messageInput"
-          :class="isMessageValid ? 'is-valid' : 'is-not-valid'"
-        />
+        <textarea name="message" id="message" v-model="messageInput"
+          :class="isMessageValid ? 'is-valid' : 'is-not-valid'" />
         <div v-if="!isMessageValid">
           <p class="error">Please include a message.</p>
         </div>
@@ -139,14 +111,13 @@
     </div>
 
     <div class="form-group text-center" @click="onSubmitClick">
+      <div data-netlify-recaptcha="true"></div>
+
       <button :disabled="!isFormValid" class="btn-fill" type="submit">
         <span>Submit</span>
       </button>
     </div>
-    <div
-      v-if="hasError"
-      class="form-group error-group flex-col text-wrapper text-center"
-    >
+    <div v-if="hasError" class="form-group error-group flex-col text-wrapper text-center">
       <div v-if="!isNameValid">
         <p>Please include your name.</p>
       </div>
@@ -160,7 +131,7 @@
   </form>
 </template>
   
-  <script>
+<script>
 export default {
   props: {
     successRoute: {
@@ -260,25 +231,31 @@ export default {
 <style lang="scss" scoped>
 form {
   margin-top: 64px;
+
   .form-group {
     display: flex;
+
     @media (max-width: 500px) {
       flex-direction: column;
-      > *:not(:last-child) {
+
+      >*:not(:last-child) {
         margin-bottom: 24px;
       }
     }
+
     .flex-col {
       flex: 1;
+
       &:not(:last-child) {
         padding-right: 24px;
       }
-      > *:not(:last-child) {
+
+      >*:not(:last-child) {
         margin-bottom: 8px;
       }
     }
 
-    & + .form-group {
+    &+.form-group {
       margin-top: 40px;
     }
   }
@@ -286,9 +263,11 @@ form {
   label {
     @include textStyle;
   }
-  input[type="radio"] + label {
+
+  input[type="radio"]+label {
     @include inputStyle;
   }
+
   textarea {
     border: 1px solid black;
     width: 100%;
@@ -309,6 +288,7 @@ form {
   label.container {
     @include inputStyle;
   }
+
   /* Hide the browser's default checkbox */
   .container input {
     position: absolute;
@@ -320,10 +300,12 @@ form {
 
   .options {
     columns: 2;
-    > * {
+
+    >* {
       margin-bottom: 8px;
     }
   }
+
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
@@ -337,12 +319,12 @@ form {
   }
 
   /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
+  .container:hover input~.checkmark {
     background-color: $golden;
   }
 
   /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
+  .container input:checked~.checkmark {
     background-color: $golden;
   }
 
@@ -354,7 +336,7 @@ form {
   }
 
   /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
+  .container input:checked~.checkmark:after {
     display: block;
   }
 
@@ -368,6 +350,7 @@ form {
   .is-not-valid {
     border-color: #fb4911;
   }
+
   p.error {
     color: #fb4911;
   }
