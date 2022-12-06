@@ -1,16 +1,22 @@
 <template>
   <div class="power-up" ref="gradientBgAnimation">
-    <div class="text-wrapper">
-      <h2 class="display-heading-style">Power Up</h2>
-      <p class="display-text-style">{{ data }}</p>
+    <div v-if="data">
+      <div class="text-wrapper" v-if="data.text">
+        <h2 class="display-heading-style">Power Up</h2>
+        <p class="display-text-style">{{ data.text }}</p>
+      </div>
+      <div v-if="data.hasNewsletter" class="newsletter-wrapper">
+        <SystemNewsletter :data="data.newsletter" />
+      </div>
     </div>
+
   </div>
 </template>
 <script>
 export default {
   props: {
     data: {
-      type: String,
+      type: Object,
       required: true,
     },
   },
@@ -29,7 +35,6 @@ export default {
 }
 
 .power-up {
-  min-height: 80vh;
   background: linear-gradient(194.53deg,
       rgba(243, 238, 231, 0.8) -4.22%,
       rgba(253, 249, 223, 0.8) 11%,
@@ -53,7 +58,7 @@ export default {
     top: -50vw;
     left: -50vw;
     width: 200vw;
-    height: 200vw;
+    height: 250vw;
 
     @media (orientation: portrait) {
       top: -50vh;
@@ -64,37 +69,113 @@ export default {
   }
 
   .text-wrapper {
+    min-height: 80vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 
     @media (max-width: $collapse-bp) {
       flex-direction: column;
+      padding: 12px;
+    }
+
+    h2 {
+      @media (max-width: $collapse-bp) {
+        text-align: right;
+        font-size: 86px;
+        line-height: 79px;
+        letter-spacing: 0.02em;
+        margin-bottom: 64px;
+        width: 100%;
+      }
+    }
+
+    p {
+      @media (min-width: $collapse-bp) {
+        flex: 0 0 476px;
+        margin-left: 200px;
+      }
+
+      @media (max-width: $collapse-bp) {
+        max-width: 80%;
+        margin-right: auto;
+      }
     }
   }
 
-  h2 {
-    @media (max-width: $collapse-bp) {
-      text-align: right;
-      font-size: 86px;
-      line-height: 79px;
-      letter-spacing: 0.02em;
-      margin-bottom: 64px;
+
+
+  .newsletter-wrapper {
+    text-align: center;
+    position: relative;
+    @include stackedDivs;
+    grid-template-rows: 420px;
+
+    @media (max-width: 880px) {
+      grid-template-rows: 500px;
+    }
+
+    &:before {
+      grid-column: 1 / 1;
+      grid-row: 1 / 1;
+      position: relative;
+      content: '';
+      background: $sunlight;
+      @include glowBox;
+      padding: 0; // reset glowbox
       width: 100%;
-    }
-  }
+      height: 100%;
 
-  p {
-    @media (min-width: $collapse-bp) {
-      flex: 0 0 476px;
-      margin-left: 200px;
-    }
-
-    @media (max-width: $collapse-bp) {
-      max-width: 80%;
+      width: 880px;
+      height: 880px;
+      margin-left: auto;
       margin-right: auto;
+
+      @media (max-width: 880px) {
+        height: 100vw;
+        width: 100vw;
+      }
+
+      left: 0;
+      top: 0;
+      border-radius: 50% 50% 0 0;
+    }
+
+    .newsletter-form {
+      place-self: center;
+      position: relative;
+      max-width: 496px;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media (max-width: 880px) {
+        max-width: 70vw;
+      }
+
+
+      h2 {
+        @include headingStyle;
+        max-width: 100%;
+        text-align: center;
+      }
+
+      p {
+        @include textStyle;
+      }
+
+    }
+
+
+    .af-element.buttonContainer {
+      margin-left: 20px;
+
+      input {
+        padding: 0 11px;
+      }
     }
   }
 }

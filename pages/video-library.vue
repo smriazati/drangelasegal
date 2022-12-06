@@ -11,7 +11,7 @@
   </div>
 </template>
   
-  <script>
+<script>
 import { groq } from "@nuxtjs/sanity";
 const query = groq`
 *[_type in ["videoLibrary", "videos"]]{
@@ -21,6 +21,7 @@ const query = groq`
   }[0],
   'videos': *[_type=='videos']{
     title,
+    description,
     id,
     "img": {
       "url": img.image.asset->url,
@@ -56,7 +57,7 @@ export default {
 };
 </script>
   
-  <style lang="scss">
+<style lang="scss">
 .video-library-page {
   .video-list {
     margin-top: 84px;

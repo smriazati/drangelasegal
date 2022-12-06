@@ -12,7 +12,7 @@
   </div>
 </template>
   
-  <script>
+<script>
 import { groq } from "@nuxtjs/sanity";
 import Thumbnail from "../components/Video/Thumbnail.vue";
 const query = groq`
@@ -38,6 +38,7 @@ const query = groq`
     "text": video.text,
     "videos": video.videos[]->{
       title,
+      description,
       id,
        "img": {
          "url": img.image.asset->url,

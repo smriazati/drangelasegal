@@ -40,7 +40,11 @@ const query = groq`
       "alt": banner.img3.image.asset->altText
     },
   },
-  power_up,
+  "power_up":  {
+    "text": power_up,
+    "hasNewsletter": addForm,
+    "newsletter": power_up_newsletter
+  },
   "callout_left": {
     "img": {
       "url": callout_left.img.image.asset->url,
@@ -87,7 +91,8 @@ export default {
   height: calc(100vh - $headerHeight);
   max-height: calc(100vh - $headerHeight);
   overflow: hidden;
-  > div {
+
+  >div {
     height: 100%;
   }
 }

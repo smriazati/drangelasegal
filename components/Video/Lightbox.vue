@@ -10,18 +10,13 @@
             <p class="input-style">Loading Video...</p>
           </div>
           <client-only>
-            <vimeo-player
-              ref="player"
-              :video-id="data.id"
-              :options="options"
-              @ready="playerReady()"
-              class="video-player"
-              :class="isLoading ? 'hide' : 'show'"
-            />
+            <vimeo-player ref="player" :video-id="data.id" :options="options" @ready="playerReady()"
+              class="video-player" :class="isLoading ? 'hide' : 'show'" />
           </client-only>
         </div>
         <div class="text-wrapper">
-          <h3 class="text-style">{{ data.title }}</h3>
+          <h3 class="display-text-style">{{ data.title }}</h3>
+          <p v-if="data.description" class="display-text-style">{{ data.description }}</p>
         </div>
       </div>
     </div>
@@ -80,10 +75,12 @@ export default {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 0.8;
   }
 }
+
 .video-lightbox {
   position: absolute;
   top: 0;
@@ -91,6 +88,7 @@ export default {
   width: 100%;
   min-height: 100vh;
   z-index: 511;
+
   .close-overlay {
     position: fixed;
     height: 100%;
@@ -100,24 +98,29 @@ export default {
     opacity: 0;
     animation: fadeIn 0.3s cubic-bezier(0.44, 0.66, 0.4, 0.89) forwards;
     background: $grey-brown;
+
     &:hover {
       cursor: pointer;
     }
+
     button {
       position: fixed;
       top: 24px;
       right: 24px;
       color: $white;
+
       &:not(:hover) {
         border-color: $white;
       }
     }
   }
+
   .video-lightbox-wrapper {
     display: grid;
     grid-template-columns: auto minmax(90%, 895px) auto;
     grid-template-rows: auto auto auto;
     min-height: 100vh;
+
     .embed-wrapper {
       position: relative;
       grid-row: 2 / 3;
@@ -131,6 +134,7 @@ export default {
       color: $white;
       max-width: 895px;
     }
+
     .text-wrapper {
       position: relative;
       grid-row: 3 / 4;
@@ -138,22 +142,37 @@ export default {
       color: $white;
       text-align: center;
       margin-top: 24px;
+
+      p {
+        margin-top: 22px;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0.02em;
+        text-align: center;
+      }
     }
   }
 }
 
 .video-player {
   transition: 0.3s ease-in opacity;
+
   &.show {
     opacity: 1;
   }
+
   &.hide {
     opacity: 0;
   }
+
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  padding-top: 56.25%;
+
+  /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
   iframe {
     position: absolute;
     top: 0;

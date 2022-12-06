@@ -2,16 +2,11 @@
   <div class="video-thumbnail">
     <div class="image-wrapper link-hover" @click="setActiveModal(item.id)">
       <figure v-if="item.img.url">
-        <img
-          :src="$urlFor(item.img.url).width(imgWidth).height(imgHeight)"
-          :alt="item.img.alt"
-        />
+        <img :src="$urlFor(item.img.url).width(imgWidth).height(imgHeight)" :alt="item.img.alt" />
       </figure>
       <figure v-else>
-        <img
-          :src="`https://via.placeholder.com/${imgWidth}x${imgHeight}/C4C4C4/C4C4C4?Text=`"
-          alt="gray placeholder image"
-        />
+        <img :src="`https://via.placeholder.com/${imgWidth}x${imgHeight}/C4C4C4/C4C4C4?Text=`"
+          alt="gray placeholder image" />
       </figure>
     </div>
 
@@ -30,8 +25,8 @@ export default {
   },
   data() {
     return {
-      imgWidth: 338 * 1.5,
-      imgHeight: 218 * 1.5,
+      imgWidth: 338 * 3,
+      imgHeight: 218 * 3,
     };
   },
   methods: {
@@ -49,11 +44,13 @@ export default {
   @include stackedDivs;
   place-items: center;
   margin-bottom: 12px;
+
   figure,
   img {
     min-width: 100%;
     min-height: 100%;
   }
+
   &:after {
     content: "";
     grid-column: 1/1;
