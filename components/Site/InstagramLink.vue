@@ -1,8 +1,6 @@
 <template>
   <span v-if="content">
-    <a :href="`https://www.instagram.com/${content.instagram}`" target="_blank"
-      >Instagram</a
-    >
+    <a :href="`https://www.instagram.com/${content.instagram}`" target="_blank">Instagram</a><span></span>
   </span>
 </template>
   
