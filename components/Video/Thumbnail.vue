@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
 .image-wrapper {
   position: relative;
-  @include stackedDivs;
+  // @include stackedDivs;
   place-items: center;
   margin-bottom: 12px;
 
