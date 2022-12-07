@@ -79,13 +79,15 @@ export default {
     margin-right: auto;
 
     @media (max-width: $collapse-bp) {
+      max-width: 90%;
       flex-direction: column;
       padding: 12px;
+      text-align: center;
     }
 
     h2 {
       @media (max-width: $collapse-bp) {
-        text-align: right;
+        text-align: center;
         font-size: 86px;
         line-height: 79px;
         letter-spacing: 0.02em;
@@ -101,8 +103,8 @@ export default {
       }
 
       @media (max-width: $collapse-bp) {
-        max-width: 80%;
-        margin-right: auto;
+        // max-width: 80%;
+        // margin-right: auto;
       }
     }
   }
@@ -116,7 +118,15 @@ export default {
     grid-template-rows: 420px;
 
     @media (max-width: 880px) {
-      grid-template-rows: 500px;
+      grid-template-rows: 560px;
+    }
+
+    // @media (max-width: 680px) {
+    //   grid-template-rows: 600px;
+    // }
+
+    @media (max-width: 450px) {
+      grid-template-rows: 660px;
     }
 
     &:before {
@@ -136,8 +146,13 @@ export default {
       margin-right: auto;
 
       @media (max-width: 880px) {
-        height: 100vw;
-        width: 100vw;
+        height: 150vw;
+        width: 130vw;
+      }
+
+      @media (max-width: 350px) {
+        height: 800px;
+        width: 600px;
       }
 
       left: 0;
