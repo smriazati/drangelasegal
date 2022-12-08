@@ -79,7 +79,7 @@ export default {
     margin-right: auto;
 
     @media (max-width: $collapse-bp) {
-      max-width: 90%;
+      max-width: 90vw;
       flex-direction: column;
       padding: 12px;
       text-align: center;
