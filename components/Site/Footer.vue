@@ -3,7 +3,9 @@
     <nuxt-link to="/" class="mark">
       <SiteMark :width="70" />
     </nuxt-link>
-    <SystemNewsletter :data="formData" />
+    <div class="newsletter-container">
+      <SystemNewsletter :data="formData" />
+    </div>
     <FooterNav v-if="isDesktop" />
     <FooterDisclaimer />
     <div class="button-wrapper">

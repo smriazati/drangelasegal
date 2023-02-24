@@ -68,13 +68,18 @@ input {
 .af-form-wrapper {
     @media (min-width: $collapse-bp) {
         width: 100%;
-        max-width: 360px;
+        // max-width: 360px;
     }
 
     margin: 24px auto 0 auto;
 
     .af-body {
         display: flex;
+    }
+
+
+    .af-element:first-child {
+        margin-right: 20px;
     }
 
     .af-element:not(:last-child) {
@@ -97,5 +102,46 @@ input {
     input[type="submit"] {
         flex: 0;
         text-align: right;
+    }
+}
+
+
+@mixin collapseForm() {
+
+    .af-body {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .af-element:first-child {
+        margin-right: 0;
+    }
+
+    .af-element:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+
+.post-newsletter {
+    @media (max-width: 1400px) {
+        @include collapseForm()
+    }
+}
+
+.site-footer .newsletter-container {
+    @media (min-width:$collapse-bp) {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media (max-width: 800px) {
+        @include collapseForm();
+    }
+}
+
+.power-up {
+    @media (max-width: 800px) {
+        @include collapseForm();
     }
 }

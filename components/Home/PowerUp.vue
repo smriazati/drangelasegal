@@ -184,14 +184,6 @@ export default {
 
     }
 
-
-    .af-element.buttonContainer {
-      margin-left: 20px;
-
-      input {
-        padding: 0 11px;
-      }
-    }
   }
 }
 </style>
