@@ -1,6 +1,7 @@
 <template>
     <div class="page-container page-container-no-padding no-page-padding">
         <div v-if="data" class="course-page">
+            {{ data }}
             <div v-for="(item, index) in data.sections" :key="item._key" :class="sectionClasses[index]">
                 <div v-if="item._type === 'intro'" class="section-intro">
                     <LayoutBanner :title="data.course?.titleShort" :text="data.course?.descShort"></LayoutBanner>
