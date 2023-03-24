@@ -73,3 +73,19 @@ $headerHeight: 214px;
     background-attachment: unset;
   }
 }
+
+@mixin collapseForm() {
+
+  .af-body {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .af-element:first-child {
+    margin-right: 0;
+  }
+
+  .af-element:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}

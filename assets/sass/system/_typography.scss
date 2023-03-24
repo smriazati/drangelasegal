@@ -182,3 +182,18 @@
   text-transform: none;
   letter-spacing: 0rem;
 }
+
+@mixin listStyle() {
+  font-family: "Source Code Pro", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.02em;
+  list-style: none;
+
+  li:before {
+    content: "*";
+    margin-right: 1ch;
+  }
+}

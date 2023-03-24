@@ -106,21 +106,6 @@ input {
 }
 
 
-@mixin collapseForm() {
-
-    .af-body {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .af-element:first-child {
-        margin-right: 0;
-    }
-
-    .af-element:not(:last-child) {
-        margin-bottom: 10px;
-    }
-}
 
 .post-newsletter {
     @media (max-width: 1400px) {
@@ -141,6 +126,12 @@ input {
 }
 
 .power-up {
+    @media (max-width: 800px) {
+        @include collapseForm();
+    }
+}
+
+.course-page {
     @media (max-width: 800px) {
         @include collapseForm();
     }

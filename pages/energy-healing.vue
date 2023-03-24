@@ -39,10 +39,7 @@
 
       <div class="image-wrapper">
         <figure v-if="data.system.img">
-          <img
-            :src="$urlFor(data.system.img.url).width(1200).auto('format')"
-            :alt="data.system.img.alt"
-          />
+          <img :src="$urlFor(data.system.img.url).width(1200).auto('format')" :alt="data.system.img.alt" />
         </figure>
       </div>
     </div>
@@ -50,10 +47,7 @@
     <div class="layout-image-text techniques">
       <div class="image-wrapper">
         <figure v-if="data.techniques.img">
-          <img
-            :src="$urlFor(data.techniques.img.url).width(1200).auto('format')"
-            :alt="data.techniques.img.alt"
-          />
+          <img :src="$urlFor(data.techniques.img.url).width(1200).auto('format')" :alt="data.techniques.img.alt" />
         </figure>
       </div>
       <div class="text-wrapper">
@@ -125,16 +119,19 @@ export default {
 <style lang="scss">
 .energy-healing {
   .layout-image-text {
+
     // grid-template-rows: 50vw;
     .text-wrapper {
       @media (min-width: $collapse-bp) {
         padding: 44px 16px;
       }
     }
+
     h2 {
       @media (min-width: $collapse-bp) {
         margin-bottom: 44px;
       }
+
       @media (max-width: $collapse-bp) {
         margin-bottom: 24px;
       }
@@ -143,22 +140,21 @@ export default {
 
   .about {
     grid-template-rows: auto;
-    > *:first-child {
+
+    >*:first-child {
       align-self: start;
     }
-    > *:last-child {
+
+    >*:last-child {
       @media (min-width: $collapse-bp) {
         padding-top: 70px;
       }
     }
   }
+
   .techniques {
     ul {
-      list-style: none;
-      li:before {
-        content: "*";
-        margin-right: 1ch;
-      }
+      @include listStyle;
     }
   }
 }
