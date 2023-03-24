@@ -1,7 +1,6 @@
 <template>
     <div class="page-container page-container-no-padding no-page-padding">
         <div v-if="data" class="course-page">
-            {{ data }}
             <div v-for="(item, index) in data.sections" :key="item._key" :class="sectionClasses[index]">
                 <div v-if="item._type === 'intro'" class="section-intro">
                     <LayoutBanner :title="data.course?.titleShort" :text="data.course?.descShort"></LayoutBanner>
@@ -54,7 +53,7 @@
 import { groq } from "@nuxtjs/sanity";
 
 export default {
-    async asyncData({ params, $sanity }) {
+    async asyncData({ params, error, $sanity }) {
         const query = groq`
         *[_type == "salesPages" && slug.current=='${params.slug}'][0]{
             "course": course->,
@@ -63,7 +62,11 @@ export default {
         }
     `;
         const data = await $sanity.fetch(query).then((res) => res);
-        return { data };
+        if (data) {
+            return { data }
+        } else {
+            error({ statusCode: 404 })
+        }
     },
     head() {
         return {
