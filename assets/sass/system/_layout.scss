@@ -2,6 +2,8 @@ $collapse-bp: 980px;
 $container-width: 1440px;
 $lg-bp: 1600px;
 $headerHeight: 214px;
+$header-height-desktop: 225px;
+$height-height-mobile: 110px;
 
 @mixin baseContainer() {
   max-width: $container-width;

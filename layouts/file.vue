@@ -3,7 +3,3 @@
         <nuxt :key="$route.fullPath" class="wrapper" />
     </div>
 </template>
-  
-<script>
-
-</script>

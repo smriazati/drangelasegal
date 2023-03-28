@@ -13,6 +13,11 @@
                     <p v-if="price" class="post-preview-title-style"> {{ price }}</p>
                     <p v-if="date" class="title-style"> {{ date }}</p>
                     <p v-if="location" class="title-style"> {{ location }}</p>
+                    <div class="button-wrapper" v-if="link">
+                        <div class="btn-fill">
+                            <a :href="link" target="_blank">Register</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,6 +41,9 @@ export default {
         price: {
             type: String,
         },
+        link: {
+            type: String,
+        }
     },
 };
 </script>
@@ -47,5 +55,17 @@ export default {
 
 .title-style {
     text-transform: none;
+}
+
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 33px;
+
+    a {
+        display: flex;
+        position: relative;
+    }
 }
 </style>

@@ -1,13 +1,18 @@
 <template>
     <div class="page-container page-container-no-padding no-page-padding">
+        <div class="scroll-hint">
+            <p>Scroll to learn more</p>
+        </div>
         <div v-if="data" class="course-page">
-            <div v-for="(item, index) in data.sections" :key="item._key" :class="sectionClasses[index]">
+            <div v-for="(item, index) in data.sections" :key="item._key" :class="sectionClasses[index]"
+                class="section-wrapper">
                 <div v-if="item._type === 'intro'" class="section-intro">
                     <LayoutBanner :title="data.course?.titleShort" :text="data.course?.descShort"></LayoutBanner>
                 </div>
                 <div v-if="item._type === 'overview'" class="section-overview">
                     <LayoutOverview :image="item.img" :title="data.course?.titleFull" :price="data.course?.price"
-                        :date="data.course?.date" :location="data.course?.location"></LayoutOverview>
+                        :date="data.course?.date" :location="data.course?.location" :link="data.course?.link">
+                    </LayoutOverview>
                 </div>
                 <div v-if="item._type === 'highlights'" class="section-highlights">
                     <LayoutHighlights :highlights="data.course?.highlights" :image="item.img">
@@ -53,6 +58,7 @@
 import { groq } from "@nuxtjs/sanity";
 
 export default {
+    layout: 'course',
     async asyncData({ params, error, $sanity }) {
         const query = groq`
         *[_type == "salesPages" && slug.current=='${params.slug}'][0]{
@@ -145,6 +151,39 @@ export default {
 .section-highlights {
     .layout-image-text {
         grid-template-rows: 50vw;
+    }
+}
+
+.section-wrapper>.section-intro>.gradient-banner {
+    @media (min-width: $collapse-bp) {
+        padding-top: $header-height-desktop;
+    }
+
+    @media (max-width: $collapse-bp) {
+        padding-top: $height-height-mobile;
+    }
+}
+
+.scroll-hint {
+    position: absolute;
+    z-index: 13;
+    top: calc(100vh - 40px);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+
+    @media (max-width: $collapse-bp) {
+        display: none;
+    }
+
+    p {
+        @include monoTypeface;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 32px;
+        letter-spacing: 0.02em;
     }
 }
 </style>

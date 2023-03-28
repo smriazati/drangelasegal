@@ -269,4 +269,8 @@ header.site-header {
     display: none;
   }
 }
+
+.layout-transparent-header header.site-header {
+  background: transparent;
+}
 </style>
