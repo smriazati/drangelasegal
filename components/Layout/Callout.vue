@@ -38,7 +38,7 @@ export default {
     align-items: center;
     @include fixedBgAttachment;
 
-    figure {
+    .text-wrapper {
         max-width: 844px;
         margin-left: auto;
         margin-right: auto;
