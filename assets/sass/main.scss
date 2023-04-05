@@ -49,27 +49,16 @@ main.site-main>div,
 }
 
 .rte {
-  h2 {
-
-    strong,
-    em {
-      font-weight: 400;
-      font-style: normal;
-    }
+  strong {
+    font-weight: 700;
   }
 
-  p {
-    strong {
-      font-weight: 700;
-    }
+  em {
+    font-style: italic;
+  }
 
-    em {
-      font-style: italic;
-    }
-
-    strong em {
-      font-weight: 700;
-      font-style: italic;
-    }
+  strong em {
+    font-weight: 700;
+    font-style: italic;
   }
 }
