@@ -55,6 +55,47 @@
         url('../fonts/source-serif/TTF/SourceSerif4-Light.ttf') format('truetype');
 }
 
+
+@font-face {
+    font-family: 'Source Serif';
+    font-weight: 300;
+    font-display: swap;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../fonts/source-serif/WOFF2/TTF/SourceSerif4-LightIt.ttf.woff2') format('woff2'),
+        url('../fonts/source-serif/WOFF/OTF/SourceSerif4-LightIt.otf.woff') format('woff'),
+        url('../fonts/source-serif/OTF/SourceSerif4-LightIt.otf') format('opentype'),
+        url('../fonts/source-serif/TTF/SourceSerif4-LightIt.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Source Serif';
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../fonts/source-serif/WOFF2/TTF/SourceSerif4-Bold.ttf.woff2') format('woff2'),
+        url('../fonts/source-serif/WOFF/OTF/SourceSerif4-Bold.otf.woff') format('woff'),
+        url('../fonts/source-serif/OTF/SourceSerif4-Bold.otf') format('opentype'),
+        url('../fonts/source-serif/TTF/SourceSerif4-Bold.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: 'Source Serif';
+    font-weight: 700;
+    font-display: swap;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../fonts/source-serif/WOFF2/TTF/SourceSerif4-BoldIt.ttf.woff2') format('woff2'),
+        url('../fonts/source-serif/WOFF/OTF/SourceSerif4-BoldIt.otf.woff') format('woff'),
+        url('../fonts/source-serif/OTF/SourceSerif4-BoldIt.otf') format('opentype'),
+        url('../fonts/source-serif/TTF/SourceSerif4-BoldIt.ttf') format('truetype');
+}
+
 // source code pro
 
 @font-face {
