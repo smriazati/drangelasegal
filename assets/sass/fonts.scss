@@ -1,6 +1,5 @@
 // source sans
 
-
 @font-face {
     font-family: 'Source Sans 3';
     font-weight: 400;
@@ -29,6 +28,16 @@
     font-display: swap;
     src: url('../fonts/source-sans/WOFF2/TTF/SourceSans3-Bold.ttf.woff2') format('woff2'),
         url('../fonts/source-sans/WOFF/OTF/SourceSans3-Bold.otf.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../fonts/source-sans/WOFF2/TTF/SourceSans3-BoldIt.ttf.woff2') format('woff2'),
+        url('../fonts/source-sans/WOFF/OTF/SourceSans3-BoldIt.otf.woff') format('woff');
 }
 
 // source serif
