@@ -47,7 +47,7 @@ export default async () => {
         { rel: 'icon', type: 'image/x-icon', href: `/favicon.ico` },
       ],
       script: [
-        // { src: 'pixel.js', type: 'text/javascript' },
+        { src: '~/scripts/pixel.js', type: 'text/javascript' },
         {
           src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js", defer: true
         },
@@ -57,6 +57,9 @@ export default async () => {
       ]
     },
     css: ['~/assets/sass/main.scss'],
+    plugins: [
+      "~/plugins/sanityImage.js", "~/plugins/sanity.js", "~/plugins/vimeo.js"
+    ],
     components: true,
     buildModules: [
       '@nuxtjs/sanity/module',
