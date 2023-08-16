@@ -47,7 +47,7 @@ export default async () => {
         { rel: 'icon', type: 'image/x-icon', href: `/favicon.ico` },
       ],
       script: [
-        { src: 'pixel.js', type: 'text/javascript' },
+        // { src: 'pixel.js', type: 'text/javascript' },
         {
           src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js", defer: true
         },
