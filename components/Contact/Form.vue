@@ -21,84 +21,12 @@
           <p class="error">Please include your email.</p>
         </div>
       </div>
-    </div>
-
-    <div class="form-group">
       <div class="visually-hidden">
         <label>Don’t fill this out if you’re human:</label>
         <input name="bot-field" />
       </div>
-      <div class="flex-col">
-        <label for="pronouns">Pronouns</label>
-        <input type="text" name="pronouns" placeholder="Your pronouns" />
-      </div>
-      <div class="flex-col">
-        <label for="phone">Phone Number</label>
-        <input type="text" name="phone" placeholder="Best number to reach you" />
-      </div>
     </div>
 
-    <div class="form-group">
-      <div class="flex-col">
-        <label for="companyName">Company Name (if applicable)</label>
-        <input type="text" name="companyName" placeholder="Your company name" />
-      </div>
-      <div class="flex-col">
-        <label for="companySite">Company Website (if applicable)</label>
-        <input type="text" name="companySite" placeholder="Website URL" />
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="flex-col">
-        <h3>Inquiry Reason</h3>
-        <div class="options">
-          <label class="container">Current Client
-            <input type="checkbox" value="current" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">Potential Client
-            <input type="checkbox" value="potential" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">Speaking Opportunity
-            <input type="checkbox" value="speaking" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">Retreat or Workshop
-            <input type="checkbox" value="retreat" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">Corporate Healing
-            <input type="checkbox" value="corporate" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">Media
-            <input type="checkbox" value="media" />
-            <span class="checkmark"></span>
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="flex-col">
-        <h3>Experience with Energy Healing:</h3>
-
-        <label class="container">None
-          <input type="radio" checked="checked" name="radio" value="none" />
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">Some
-          <input type="radio" name="radio" value="some" />
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">Extensive
-          <input type="radio" name="radio" value="extensive" />
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
     <div class="form-group">
       <div class="flex-col">
         <label for="message">Message *</label>
@@ -277,6 +205,7 @@ form {
     border: 1px solid black;
     width: 100%;
     min-height: 160px;
+    padding: 4px 8px;
   }
 
   .container {
