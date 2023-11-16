@@ -34,7 +34,7 @@ textarea {
     resize: none;
 }
 
-input {
+.newsletter-form input {
     height: 26px;
     width: auto;
     border-bottom: 1px solid black;
@@ -65,7 +65,7 @@ input {
 
 }
 
-.af-form-wrapper {
+.newsletter-wrapper  .af-form-wrapper {
     @media (min-width: $collapse-bp) {
         width: 100%;
         // max-width: 360px;
