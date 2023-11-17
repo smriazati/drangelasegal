@@ -1,7 +1,7 @@
 <template>
   <div class="index-page no-page-padding">
     <div class="aweber-form">
-      <Home AweberForm />
+      <HomeAweberForm />
     </div>
     <div class="home-banner-container">
       <div v-if="data.banner">
