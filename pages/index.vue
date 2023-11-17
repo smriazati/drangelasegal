@@ -1,7 +1,7 @@
 <template>
   <div class="index-page no-page-padding">
     <div class="aweber-form">
-      <HomeAweberForm />
+      <AweberForm />
     </div>
     <div class="home-banner-container">
       <div v-if="data.banner">
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import AweberForm from "~/components/Home/AweberForm.vue";
 import { groq } from "@nuxtjs/sanity";
 const query = groq`
 *[_type in ["home"]][0]{
@@ -84,7 +85,10 @@ export default {
   async asyncData({ $sanity }) {
     const data = await $sanity.fetch(query).then((res) => res);
     return { data };
-  }
+  },
+  components: {
+    AweberForm,
+  },
 };
 </script>
 
@@ -95,7 +99,7 @@ export default {
   max-height: calc(100vh - $headerHeight);
   overflow: hidden;
 
-  >div {
+  > div {
     height: 100%;
   }
 }
