@@ -1,7 +1,18 @@
 <!-- AweberForm.vue -->
 <template>
   <div class="aweber-form-container">
-    <div class="AW-Form-143896882"></div>
+    <!-- <div class="AW-Form-143896882"></div> -->
+    <b-embed 
+        id="AW-Form-143896882"
+        title="Sign Up Form"
+        onload="window.parent.scrollTo(0,0)"
+        allowtransparency="true"
+        allowfullscreen="true"
+        src="https://forms.aweber.com/form/82/143896882.htm"
+        style="width: 300px;"
+        frameborder="0"
+        scrolling="yes">
+      </b-embed>
   </div>
 </template>
 
