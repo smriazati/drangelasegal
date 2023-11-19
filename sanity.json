@@ -1,11 +1,11 @@
 {
   "root": true,
-  "project": {
-    "name": "Dr. Angela Segal"
-  },
   "api": {
     "projectId": "0jo9hjnc",
     "dataset": "production"
+  },
+  "project": {
+    "name": "Dr. Angela Segal"
   },
   "plugins": [
     "@sanity/base",
