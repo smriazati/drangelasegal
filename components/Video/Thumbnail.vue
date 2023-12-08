@@ -14,9 +14,7 @@
         </figcaption>
       </div>
 
-      <div class="text-wrapper text-center">
-        <h3 v-if="item.title">{{ item.title }}</h3>
-      </div>
+      <div v-if="item.title" class="video-title" >{{ item.title }}</div>
     </div>
   </div>
 </template>
@@ -125,5 +123,10 @@ export default {
       line-height: 140%;
     }
   }
+}
+
+.video-title {
+    padding-left: 3px;
+    font-size: 18px;
 }
 </style>
