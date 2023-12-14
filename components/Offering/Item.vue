@@ -2,12 +2,35 @@
   <div class="offering-item">
     <div class="offering-item-wrapper">
       <div class="offering-content">
+        <div class="image-wrapper">
+        <figure v-if="data.img.url">
+          <img
+            :src="
+              $urlFor(data.img.url)
+                .width(417 * 2)
+                .height(396 * 2)
+                .auto('format')
+                .fit('clip')
+            "
+            :alt="data.img.alt"
+          />
+        </figure>
+        <figure v-else>
+          <img
+            :src="`https://via.placeholder.com/${417 * 2}x${
+              396 * 2
+            }/C4C4C4/C4C4C4?Text=`"
+            alt="gray placeholder image"
+          />
+        </figure>
+      </div>
         <div class="text-wrapper text-center page-title">
-          <h1 class="title-style">Offerings</h1>
           <h2 v-if="data.title" class="heading-style">{{ data.title }}</h2>
-          <p v-if="data.desc">
-            {{ data.desc }}
-          </p>
+          <div class="text-wrapper-offering">
+            <p v-if="data.desc">
+              {{ data.desc }}
+            </p>
+          </div>
         </div>
         <div v-if="data.link" class="link-wrapper text-center">
           <SystemLinkObject :data="data.link" />
@@ -48,14 +71,23 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
+.offering-item {
+  // display: inline-block;
+}
+
 .offering-item-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 350px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   .offering-content {
-    @include glowBox;
+    // @include glowBox;
+    
     @media (min-width: 684px) {
       max-width: 684px;
     }
@@ -68,12 +100,18 @@ export default {
         line-height: 36px;
       }
     }
+
     .link-wrapper {
       margin-top: 24px;
       a {
         @include linkUnderline;
         @include inputStyle;
       }
+
+    .text-wrapper-offering {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
     }
     .events-wrapper {
       margin-top: 60px;

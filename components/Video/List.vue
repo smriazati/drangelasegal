@@ -6,7 +6,7 @@
         :key="`${item.id}${index}`"
         :item="item"
         @open-lightbox="setActiveModal(item)"
-      />
+      >{{ item }}</VideoThumbnail>
     </div>
     <div v-if="activeModal">
       <VideoLightbox :data="activeModal" @close-lightbox="unsetActiveModal()" />
